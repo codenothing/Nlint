@@ -42,6 +42,9 @@ Nodelint also allows you to store the results into a logfile of your choosing
 
 	$ node autorun.js -l logfile.out file.js
 
+Here's a quick screen shot of possible results
+
+![Nodelint Example](http://www.codenothing.com/images/github/Nodelint/example.png "Nodelint Example")
 
 
 Nodelint Usage
