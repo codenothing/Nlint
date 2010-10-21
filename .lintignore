@@ -4,3 +4,7 @@
 # Ignore all non nodelint packages
 lib/jslint/
 lib/vim/
+
+# For testing purposes
+test/ignore*
+test/*ignore*

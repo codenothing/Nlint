@@ -20,10 +20,10 @@ Nodelint
 	myproject/jquery/jquery.js
 
 	# Ignore the compressed directory as it definently won't pass jslint
-	myproject/compressedjs/
+	myproject/compressedjs/*
 
-	# Ignore my config file because it has special hacks
-	myproject/config.js
+	# Ignore all my config files because they have special hacks
+	myproject/*.config.js
 
 **Note:** The renderer reads all .lintignore files up the file tree, so be aware when marking files down the tree.
 
@@ -135,9 +135,7 @@ Credits
 [Node]: http://nodejs.org/
 [V8]: http://code.google.com/p/v8/
 [JSLint]: http://www.jslint.com/lint.html
-
 [JSLINT's Options]: http://www.jslint.com/lint.html#options
-
 [tav]: http://tav.espians.com
 [felixge]: http://debuggable.com
 [Douglas Crockford]: http://www.crockford.com
