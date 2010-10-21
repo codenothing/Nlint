@@ -1,10 +1,10 @@
 Nodelint.js
 ===========
 
-Nodelint.js is the main Nodelint module that calls the renders files/directories and formats the output.
+Nodelint.js is the main Nodelint module that renders files/directories and formats the output.
 
 
-Nodelint.lint
+Nodelint.lint( Files, [Options,] Callback )
 -------------
 
 Nodelint.lint is the function that formats the result from the rendering module. It takes three paramters
@@ -17,13 +17,13 @@ Nodelint.lint is the function that formats the result from the rendering module.
 
 
 
-The callback gets pass two arguments to it. The first is any error that may bubble up during rendering process, and a results object.
+The callback gets passed two arguments to it. The first is any error that may bubble up during rendering process, and a results object.
 
 	{
-	  passes: Array of files that passes jslint
-	  errors: Array of objects containing files taht didn't pass, and the errors found within
+	  passes: Array of file paths that passed jslint
+	  errors: Array of objects containing files that didn't pass, and the errors found within
 	  missing: Files missing that couldn't be found
-	  count: Object containing a count on the number of file processed, and the number of errors found
+	  count: Object containing a count on the number of files processed, and the number of errors found
 	  output: Formatted output for the terminal
 	  logfile: Formatted output for a logfile
 	}

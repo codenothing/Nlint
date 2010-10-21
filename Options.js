@@ -19,7 +19,7 @@ exports.Options = {
 	},
 
 	// Shortcuts for nodelint settings
-	shortcutts: {
+	shortcuts: {
 
 		// Shortcut for logfile, expecting next argument to be path to logfile
 		'l': {

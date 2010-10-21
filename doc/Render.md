@@ -18,6 +18,7 @@ Render is the main constructor. It takes three arguments
 The callback function gest passed two arguments. The first is an error that might have bubbled
 up during rendering, and the second is current instance of the Render Object.
 
+	// Render Instance
 	{
 	  passes: Array of files that passed JSLINT
 	  errors: Array of objects containing the filename that failed JSLINT, and the errors found
@@ -43,7 +44,7 @@ Render.warning( msg )
 Gets called with warrning messages about the current processing of the rendering module.
 
 
-Render.error( msg )
+Render.error( e )
 -------------------
 
 Gets called when there is a serious error in the rendering process.

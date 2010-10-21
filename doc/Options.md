@@ -22,7 +22,7 @@ JSLINT specific options that just get passed to the JSLINT parser.
 
 
 
-shortcutts
+shortcuts
 ----------
 
 Object containing shortcut references for Nodelint options. Each shortcut must use the following format
