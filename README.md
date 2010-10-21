@@ -7,8 +7,9 @@ Nodelint
 
 - [JSLint] is a code quality tool that checks for problems in javascript programs.
 
-- **Nodelint** Parses through files or projects to find syntax errors in your javascript files
+- **Nodelint** Parses through files or projects to find syntax errors in your javascript files. Heres a quick example
 
+![Nodelint Autorun Example](http://www.codenothing.com/images/github/Nodelint/example.png "Nodelint Autorun Example")
 
 
 .lintignore
@@ -42,9 +43,22 @@ Nodelint also allows you to store the results into a logfile of your choosing
 
 	$ node autorun.js -l logfile.out file.js
 
-Here's a quick screen shot of possible results
 
-![Nodelint Autorun Example](http://www.codenothing.com/images/github/Nodelint/example.png "Nodelint Autorun Example")
+
+Bash Alias
+----------
+
+You can create a bash alias to map your own command to jslint. Just add the following to your bashrc file
+	
+	jslint() {
+		node path/to/Nodelint/autorun.js "$@"
+	}
+
+And then you will be able to call Nodelint on-demand
+
+	$ jslint [options] file.js [file2.js dir dir2]
+
+
 
 
 Nodelint Usage
@@ -70,22 +84,6 @@ Nodelint can be included into your project or build process easily. Here's a qui
 	});
 
 You can read more about Nodelint and other modules inside the doc/ directory.
-
-
-
-Bash Alias
-----------
-
-You can create a bash alias to map your own command to jslint. Just add the following to your bashrc file
-	
-	jslint() {
-		clear
-		node path/to/Nodelint/autorun.js "$@"
-	}
-
-And then you will be able to call nodelint on multiple files like so:
-
-	$ jslint [options] file.js [file2.js dir dir2]
 
 
 

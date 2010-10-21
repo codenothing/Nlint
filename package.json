@@ -1,6 +1,6 @@
 {
 	"name": "Nodelint",
-	"description": "Nodelint is a tool that uses the power of JSLINT to parse your js files for errors.",
+	"description": "Nodelint is a tool that uses the power of JSLINT to parse your javascript files for errors.",
 	"version": "[VERSION]",
 	"homepage": "http://www.codenothing.com/archives/2010/Nodelint/",
 	"author": "Corey Hart <corey@codenothing.com> (http://www.codenothing.com)",
