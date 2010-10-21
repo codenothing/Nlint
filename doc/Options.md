@@ -10,6 +10,7 @@ nodelint
 
 This object contains all the default settings for Nodelint the project.
 
+	// Nodelint options
 	{
 	  logfile: Path to a logfile to store the results. Defaults to null.
 	  jslint: Path to custom JSLINT file. Defaults to null.
@@ -29,7 +30,7 @@ shortcuts
 Object containing shortcut references for Nodelint options. Each shortcut must use the following format
 
 	"character": {
-		"long": longhand refrence
+		"long": longhand reference
 		"expect": Boolean, true if option expects an argument to follow, false to just use the default
 		"default": Default value for when the shortcut is used without an expectation
 	}

@@ -3,11 +3,11 @@ This implementation is a branch of [tav]'s original [nodelint.js]
 Nodelint
 ========
 
-- [Node] is a [V8] based framework for writing Javascript applications outside the browser.
+- [Node] is a [V8] based framework for writing javascript applications outside the browser.
 
-- [JSLint] is a code quality tool that checks for problems in Javascript programs.
+- [JSLint] is a code quality tool that checks for problems in javascript programs.
 
-- **Nodelint** Parses through files or projects to find syntax errors in your js files
+- **Nodelint** Parses through files or projects to find syntax errors in your javascript files
 
 
 
@@ -19,7 +19,7 @@ Nodelint
 	# Ignore jquery as it doesn't pass my version of JSLINT, but is browser safe
 	myproject/jquery/jquery.js
 
-	# Ignore the compressed directory as it definently won't pass jslint
+	# Ignore the compressed directory as it definitely won't pass jslint
 	myproject/compressedjs/*
 
 	# Ignore all my config files because they have special hacks
@@ -44,7 +44,7 @@ Nodelint also allows you to store the results into a logfile of your choosing
 
 Here's a quick screen shot of possible results
 
-![Nodelint Example](http://www.codenothing.com/images/github/Nodelint/example.png "Nodelint Example")
+![Nodelint Autorun Example](http://www.codenothing.com/images/github/Nodelint/example.png "Nodelint Autorun Example")
 
 
 Nodelint Usage

@@ -1,7 +1,7 @@
 Autorun.js
 ==========
 
-Autorun.js runs Nodelint using command line arugments, and outputs results to the terminal.
+Autorun.js runs Nodelint using command line arguments, and outputs results to the terminal.
 
 
 Usage

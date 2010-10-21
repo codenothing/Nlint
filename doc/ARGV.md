@@ -8,7 +8,7 @@ ARGV.js parses the command line arguments and merges them into their respective 
 Files
 -----
 
-Array of files passed along the command line to be renedered.
+Array of files passed along the command line to be rendered.
 
 
 Usage

@@ -27,7 +27,7 @@ Usage
 	# Ignore jquery as it doesn't pass my version of JSLINT, but is browser safe
 	myproject/jquery/jquery.js
 
-	# Ignore the compressed directory as it definently won't pass jslint
+	# Ignore the compressed directory as it definitely won't pass jslint
 	myproject/compressedjs/*
 
 	# Ignore all my config files because they have special hacks

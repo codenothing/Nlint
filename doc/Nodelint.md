@@ -7,7 +7,7 @@ Nodelint.js is the main Nodelint module that renders files/directories and forma
 Nodelint.lint( Files, [Options,] Callback )
 -------------
 
-Nodelint.lint is the function that formats the result from the rendering module. It takes three paramters
+Nodelint.lint is the function that formats the result from the rendering module. It takes three parameters
 
 - **Files:** A single file path, or array of file paths to be parsed.
 
