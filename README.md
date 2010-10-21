@@ -1,7 +1,7 @@
 This implementation is a branch of [tav]'s original [nodelint.js]
 
 Nodelint
---------
+========
 
 - [Node] is a [V8] based framework for writing Javascript applications outside the browser.
 
