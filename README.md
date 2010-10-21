@@ -10,6 +10,7 @@ Nodelint
 - **Nodelint** Parses through files or projects to find syntax errors in your js files
 
 
+
 .lintignore
 -----------
 
@@ -25,6 +26,7 @@ Nodelint
 	myproject/config.js
 
 **Note:** The renderer reads all .lintignore files up the file tree, so be aware when marking files down the tree.
+
 
 
 Autorun Usage
@@ -49,7 +51,7 @@ Nodelint can be included into your project or build process easily. Here's a qui
 
 	var Nodelint = require('/path/to/Nodelint'), sys = require('sys'), fs = require('fs');
 
-	Nodelint.lint( '/path/to/myproject', function( results ) {
+	Nodelint.lint( '/path/to/myproject', function( e, results ) {
 		if ( results.errors.length ) {
 			// Do something when there are errors
 		}
@@ -93,6 +95,7 @@ or to update to a newer version of JSLINT, simply add the following as the last 
 and put it under Nodelint/lib/jslint/
 
 	exports.JSLINT = JSLINT;
+
 
 
 
