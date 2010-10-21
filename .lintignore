@@ -1,0 +1,6 @@
+# Nothing good can come from the git repo
+.git/
+
+# Ignore all non nodelint packages
+lib/jslint/
+lib/vim/
