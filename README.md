@@ -3,8 +3,7 @@ This implementation is a branch of [tav]'s original [nodelint.js]
 Nodelint
 --------
 
-- [Node] is a [V8] based framework for writing Javascript applications outside
-  the browser.
+- [Node] is a [V8] based framework for writing Javascript applications outside the browser.
 
 - [JSLint] is a code quality tool that checks for problems in Javascript programs.
 
@@ -48,7 +47,7 @@ Nodelint Usage
 
 Nodelint can be included into your project or build process easily. Here's a quick example
 
-	var Nodelint = require('/path/to/nodelint'), sys = require('sys'), fs = require('fs');
+	var Nodelint = require('/path/to/Nodelint'), sys = require('sys'), fs = require('fs');
 
 	Nodelint.lint( '/path/to/myproject', function( results ) {
 		if ( results.errors.length ) {
@@ -76,7 +75,7 @@ You can create a bash alias to map your own command to jslint. Just add the foll
 	
 	jslint() {
 		clear
-		node path/to/autorun.js "$@"
+		node path/to/Nodelint/autorun.js "$@"
 	}
 
 And then you will be able to call nodelint on multiple files like so:
@@ -90,7 +89,8 @@ Custom JSLINT
 -------------
 
 The current package comes with the latest version of JSLINT(2010-10-16), to add your own custom version,
-or to update to a newer version of JSLINT, simply add the following as the last line of the JSLINT.js file
+or to update to a newer version of JSLINT, simply add the following as the last line of the jslint.js file,
+and put it under Nodelint/lib/jslint/
 
 	exports.JSLINT = JSLINT;
 
@@ -107,8 +107,7 @@ Take a look at [JSLINT's Options] to see what to put in there.
 Contribute
 ----------
 
-To contribute any patches to this fork, simply fork this repository using GitHub and send a
-pull request to me <<http://github.com/codenothing>>. Thanks!
+To contribute any patches, simply fork this repository using GitHub and send a pull request to me <<http://github.com/codenothing>>. Thanks!
 
 
 

@@ -14,6 +14,10 @@ exports.Options = {
 
 	},
 
+	// Default jslint settings
+	jslint: {
+	},
+
 	// Shortcuts for nodelint settings
 	shortcutts: {
 
@@ -24,10 +28,6 @@ exports.Options = {
 			'default': null
 		}
 
-	},
-
-	// Default jslint settings
-	jslint: {
 	}
 
 };
