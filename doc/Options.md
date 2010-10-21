@@ -12,6 +12,7 @@ This object contains all the default settings for Nodelint the project.
 
 	{
 	  logfile: Path to a logfile to store the results. Defaults to null.
+	  jslint: Path to custom JSLINT file. Defaults to null.
 	}
 
 

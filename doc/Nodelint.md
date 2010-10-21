@@ -19,6 +19,7 @@ Nodelint.lint is the function that formats the result from the rendering module.
 
 The callback gets passed two arguments to it. The first is any error that may bubble up during rendering process, and a results object.
 
+	// Results object
 	{
 	  passes: Array of file paths that passed jslint
 	  errors: Array of objects containing files that didn't pass, and the errors found within

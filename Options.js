@@ -10,7 +10,10 @@ exports.Options = {
 	nodelint: {
 
 		// If requested, default log file
-		'logfile': null
+		'logfile': null,
+
+		// Path to custom JSLINT file
+		'jslint': null
 
 	},
 
