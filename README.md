@@ -12,6 +12,35 @@ Nodelint
 ![Nodelint Autorun Example](http://www.codenothing.com/images/github/Nodelint/example.png "Nodelint Autorun Example")
 
 
+
+NPM Installation
+----------------------
+
+If you have npm installed, installing Nodelint is a breeze.
+
+	$ npm install Nodelint
+	$ echo "require('Nodelint').autorun();" > ~/.Nodelint.autorun.js
+	$ echo "alias jslint='node ~/.Nodelint.autorun.js \"\$@\"'" >> ~/.bashrc
+	$ source ~/.bashrc
+
+	// Now we can use the jslint alias
+	$ jslint file.js
+
+
+
+Download and Install
+--------------------
+
+If you want to use the source directly, here's a few steps that should help
+
+1. Download and extract Nodelint into a path of your choice
+
+2. Add the alias to your bashrc file: alias jslint='node /path/to/Nodelint/autorun.js "$@"'
+
+3. Source your bashrc file, and your good to go.
+
+
+
 .lintignore
 -----------
 
@@ -50,11 +79,9 @@ Bash Alias
 
 You can create a bash alias to map your own command to jslint. Just add the following to your bashrc file
 	
-	jslint() {
-		node path/to/Nodelint/autorun.js "$@"
-	}
+	alias jslint='node /path/to/Nodelint/autorun.js "$@"'
 
-And then you will be able to call Nodelint on-demand
+And then you will be able to call Nodelint with jslint alias
 
 	$ jslint [options] file.js [file2.js dir dir2]
 
