@@ -7,5 +7,5 @@ Autorun.js runs Nodelint using command line arguments, and outputs results to th
 Usage
 =====
 
-	// Just have to include, it will run itself
-	require('Nodelint/lib/nodelint/Autorun');
+	// Just have to call the autorun extension
+	require('Nodelint').autorun();

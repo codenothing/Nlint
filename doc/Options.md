@@ -50,4 +50,4 @@ Usage
 =====
 
 	// Not much too it, just returns the options object
-	var Options = require('Nodelint/lib/nodelint/Options').Options;
+	var Options = require('Nodelint').Options;

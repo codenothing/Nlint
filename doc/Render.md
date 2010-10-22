@@ -32,32 +32,19 @@ It's important to note that all this function does is render the path or directo
 and send back the data. Formatting the response is up to the caller.
 
 
-Render.info( msg )
-------------------
-
-Gets called with informational messages about the current processing of the rendering module.
-
-
-Render.warning( msg )
----------------------
-
-Gets called with warning messages about the current processing of the rendering module.
-
-
-Render.error( e )
--------------------
-
-Gets called when there is a serious error in the rendering process.
-
-
 
 Usage
 =====
 
-	var Render = require('Nodelint/lib/nodelint/Render').Render, sys = require('sys');
+	var Render = require('Nodelint').Render, sys = require('sys');
 
 	Render( '/path/to/projectORfile', function( e, results ) {
-		sys.puts( "Files Rendered - " + results.count.files );
-		sys.puts( "Files Passed - " + results.passes.length );
-		sys.puts( "Files with Errors - " + results.errors.length );
+		if ( e ) {
+			Nodelint.error( e );
+		}
+		else {
+			sys.puts( "Files Rendered - " + results.count.files );
+			sys.puts( "Files Passed - " + results.passes.length );
+			sys.puts( "Files with Errors - " + results.errors.length );
+		}
 	});

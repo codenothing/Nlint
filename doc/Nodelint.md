@@ -4,10 +4,10 @@ Nodelint.js
 Nodelint.js is the main Nodelint module that renders files/directories and formats the output.
 
 
-Nodelint.lint( Files, [Options,] Callback )
+Nodelint( Files, [Options,] Callback )
 -------------
 
-Nodelint.lint is the function that formats the result from the rendering module. It takes three parameters
+Nodelint is the function that formats the result from the rendering module. It takes three parameters
 
 - **Files:** A single file path, or array of file paths to be parsed.
 
@@ -33,27 +33,31 @@ The callback gets passed two arguments to it. The first is any error that may bu
 Nodelint.info( msg )
 --------------------
 
-Informational messages sent from the Rendering module will be passed along to this function
+Informational messages during Nodelint processing.
 
 
 Nodelint.warn( msg )
 --------------------
 
-Warning messages sent from the Rendering module will be passed along to this function
+Warning messages that may bubble up.
 
 
 Nodelint.error( e )
 -------------------
 
-Error messages sent from the Rendering module will be passed along to this function
+Process ending error's the may bubble up.
 
 
 Usage
 =====
 
-	var Nodelint = require('Nodelint/lib/nodelint/Nodelint').Nodelint, sys = require('sys'), fs = require('fs');
+	var Nodelint = require('Nodelint'), sys = require('sys'), fs = require('fs');
 
-	Nodelint.lint( '/path/to/myproject', function( e, results ) {
+	Nodelint( '/path/to/myproject', function( e, results ) {
+		if ( e ) {
+			return Nodelint.error( e );
+		}
+
 		if ( results.errors.length ) {
 			// Do something when there are errors
 		}

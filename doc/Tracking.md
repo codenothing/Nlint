@@ -74,7 +74,7 @@ Function that stops the tracking.
 Usage
 =====
 
-	var Tracking = require('Nodelint/lib/nodelint/Tracking').Tracking, sys = require('sys');
+	var Tracking = require('Nodelint').Tracking, sys = require('sys');
 
 	// Create a new instance of tracking
 	var track = new Tracking( 'My Custom Tracker', function( e, results ) {

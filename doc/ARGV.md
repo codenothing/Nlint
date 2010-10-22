@@ -5,7 +5,7 @@ ARGV.js parses the command line arguments and merges them into their respective 
 
 
 
-Files
+ARGVFiles
 -----
 
 Array of files passed along the command line to be rendered.
@@ -15,4 +15,4 @@ Usage
 =====
 
 	// Returns the array of files to be rendered
-	var Files = require('Nodelint/lib/nodelint/ARGV').Files;
+	var Files = require('Nodelint').ARGVFiles;

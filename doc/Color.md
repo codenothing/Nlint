@@ -17,7 +17,7 @@ Usage
 =====
 
 	// Color Module
-	var Color = require('Nodelint/lib/nodelint/Color').Color, sys = require('sys');
+	var Color = require('Nodelint').Color, sys = require('sys');
 
 	// Shortcut to coloring a string red for terminal output
 	sys.puts( Color.red( 'This is a red string' ) );

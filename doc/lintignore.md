@@ -5,9 +5,9 @@
 The file can be placed anywhere along the file tree, as the rendering module
 works backwards to pick it up.
 
-	var Nodelint = require('/path/to/Nodelint'), sys = require('sys');
+	var Nodelint = require('Nodelint'), sys = require('sys');
 
-	Nodelint.lint( '/Users/myname/some/path/myproject/', function( e, results ) {
+	Nodelint( '/Users/myname/some/path/myproject/', function( e, results ) {
 		sys.puts( results.output );
 	});
 
