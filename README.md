@@ -9,7 +9,7 @@ Nodelint
 
 - **Nodelint** Parses through files or projects to find syntax errors in your javascript files. Heres a quick example
 
-![Nodelint Cli Example](http://www.codenothing.com/images/github/Nodelint/example.png "Nodelint Cli Example")
+![Nodelint Cli Example](http://www.cnstatic.com/images/github/Nodelint/example.png "Nodelint Cli Example")
 
 
 
