@@ -9,7 +9,18 @@ Nodelint
 
 - **Nodelint** Parses through files or projects to find syntax errors in your javascript files. Heres a quick example
 
-![Nodelint Autorun Example](http://www.codenothing.com/images/github/Nodelint/example.png "Nodelint Autorun Example")
+![Nodelint Cli Example](http://www.codenothing.com/images/github/Nodelint/example.png "Nodelint Cli Example")
+
+
+
+Installation
+------------
+
+1. Download and extract Nodelint into a path of your choice
+
+2. Add the alias to your bashrc file: alias jslint='node /path/to/Nodelint/cli.js "$@"'
+
+3. Source your bashrc file, and your good to go.
 
 
 
@@ -19,25 +30,12 @@ NPM Installation
 If you have npm installed, installing Nodelint is a breeze.
 
 	$ npm install Nodelint
-	$ echo "require('Nodelint').autorun();" > ~/.Nodelint.autorun.js
-	$ echo "alias jslint='node ~/.Nodelint.autorun.js \"\$@\"'" >> ~/.bashrc
+	$ echo "require('Nodelint').cli();" > ~/.Nodelint.cli.js
+	$ echo "alias jslint='node ~/.Nodelint.cli.js \"\$@\"'" >> ~/.bashrc
 	$ source ~/.bashrc
 
 	// Now we can use the jslint alias
 	$ jslint file.js
-
-
-
-Download and Install
---------------------
-
-If you want to use the source directly, here's a few steps that should help
-
-1. Download and extract Nodelint into a path of your choice
-
-2. Add the alias to your bashrc file: alias jslint='node /path/to/Nodelint/autorun.js "$@"'
-
-3. Source your bashrc file, and your good to go.
 
 
 
@@ -59,18 +57,18 @@ If you want to use the source directly, here's a few steps that should help
 
 
 
-Autorun Usage
--------------
+Cli Usage
+---------
 
-	$ node autorun.js [options] file.js [file2.js dir dir2]
+	$ node cli.js [options] file.js [file2.js dir dir2]
 
 Nodelint passes all non-nodelint options on as JSLINT options
 
-	$ node autorun.js --adsafe=true file.js
+	$ node cli.js --adsafe=true file.js
 
 Nodelint also allows you to store the results into a logfile of your choosing
 
-	$ node autorun.js -l logfile.out file.js
+	$ node cli.js -l logfile.out file.js
 
 
 
@@ -79,7 +77,7 @@ Bash Alias
 
 You can create a bash alias to map your own command to jslint. Just add the following to your bashrc file
 	
-	alias jslint='node /path/to/Nodelint/autorun.js "$@"'
+	alias jslint='node /path/to/Nodelint/cli.js "$@"'
 
 And then you will be able to call Nodelint with jslint alias
 
@@ -122,11 +120,14 @@ You can read more about Nodelint and other modules inside the doc/ directory.
 Custom JSLINT
 -------------
 
-The current package comes with the latest version of JSLINT(2010-10-16), to add your own custom version,
-or to update to a newer version of JSLINT, simply add the following as the last line of the jslint.js file,
-and put it under Nodelint/lib/jslint/
+The current package comes with the latest version of JSLINT(2010-10-16). To add your own custom version,
+or to update to a newer version of JSLINT, add the following as the last line of the jslint.js file.
 
 	exports.JSLINT = JSLINT;
+
+And then put that jslint file in your Nodelint/lib/jslint/ directory, or add it as a cli option
+
+	$ node cli.js --jslint=/path/to/my/jslint.js file.js
 
 
 

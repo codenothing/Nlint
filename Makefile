@@ -10,4 +10,4 @@ NODE = node
 
 
 test:
-	@$(NODE) autorun.js .
+	@$(NODE) cli.js .
