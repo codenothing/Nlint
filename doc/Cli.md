@@ -1,7 +1,7 @@
 Cli.js
 ==========
 
-Cli.js triggers the reading of command line arguments, and returns list of files read.
+Cli.js triggers the reading of command line arguments, and runs JSLINT through the files/directories passed.
 
 
 Usage
