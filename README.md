@@ -18,7 +18,7 @@ Installation
 
 1. Download and extract Nodelint into a path of your choice
 
-2. Add the alias to your bashrc file: alias jslint='node /path/to/Nodelint/cli.js "$@"'
+2. Add the alias to your bashrc file: alias jslint='node /path/to/Nodelint/index.js --Nodelint-cli "$@"'
 
 3. Source your bashrc file, and your good to go.
 
@@ -27,11 +27,11 @@ Installation
 NPM Installation
 ----------------------
 
-If you have npm installed, installing Nodelint is a breeze.
+You can also install Nodelint through npm if you like.
 
 	$ npm install Nodelint
-	$ echo "require('Nodelint').cli();" > ~/.Nodelint.cli.js
-	$ echo "alias jslint='node ~/.Nodelint.cli.js \"\$@\"'" >> ~/.bashrc
+	$ echo "module.exports = require('Nodelint');" > ~/.Nodelint.js
+	$ echo "alias jslint='node ~/.Nodelint.js --Nodelint-cli \"\$@\"'" >> ~/.bashrc
 	$ source ~/.bashrc
 
 	// Now we can use the jslint alias
@@ -60,6 +60,12 @@ If you have npm installed, installing Nodelint is a breeze.
 Cli Usage
 ---------
 
+You can autorun Nodelint based on command line arguments by passing the cli flag
+	
+	$ node Nodelint.js --Nodelint-cli [options] file.js [file2.js dir dir2]
+
+Nodelint comes with a cli script that will also force autorun without having to pass the cli flag.
+
 	$ node cli.js [options] file.js [file2.js dir dir2]
 
 Nodelint passes all non-nodelint options on as JSLINT options
@@ -77,12 +83,27 @@ Bash Alias
 
 You can create a bash alias to map your own command to jslint. Just add the following to your bashrc file
 	
-	alias jslint='node /path/to/Nodelint/cli.js "$@"'
+	alias jslint='node /path/to/Nodelint/index.js --Nodelint-cli "$@"'
 
 And then you will be able to call Nodelint with jslint alias
 
 	$ jslint [options] file.js [file2.js dir dir2]
 
+
+
+Pre-commit Hook
+---------------
+
+Nodelint has a special operation for projects that want to use their version control pre-commit hooks.
+Just add the following line to your pre-commit bash script
+
+	node /path/to/Nodelint/index.js --Nodelint-pre-commit .
+
+On large projects, if there are many errors, node might not have enough time to flush it's buffers which
+will result in partial output. To fix this, you will need to increase the buffer wait time(in millisecongs)
+before Nodelint exits
+
+	node /path/to/Nodelint/index.js --Nodelint-pre-commit --buffer-wait=2000 .
 
 
 

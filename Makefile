@@ -10,4 +10,4 @@ NODE = node
 
 
 test:
-	@$(NODE) cli.js -vw .
+	@$(NODE) cli.js -vpw .
