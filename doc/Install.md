@@ -21,4 +21,3 @@ You can also install Nodelint through npm if you like.
 
 	// Now we can use the jslint alias
 	$ jslint file.js
-1. 

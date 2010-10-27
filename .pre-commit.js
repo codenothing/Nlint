@@ -24,6 +24,6 @@ Nodelint( __dirname, function( e, results ) {
 		// Terrible hack to ensure buffers clear
 		setTimeout(function(){
 			process.exit( 1 );
-		}, 400);
+		}, Nodelint.Options.nodelint[ 'buffer-wait' ] );
 	}
 });

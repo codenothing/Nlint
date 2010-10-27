@@ -21,12 +21,14 @@ The callback gets passed two arguments to it. The first is any error that may bu
 
 	// Results object
 	{
+	  stdout: Standard output formatted for the terminal
+	  stderr: Standard error formatted for the terminal
+	  output: Combination of stdout and stderr formatted for the terminal
+	  logfile: Output formatted for a text file
 	  passes: Array of file paths that passed jslint
 	  errors: Array of objects containing files that didn't pass, and the errors found within
 	  missing: Files missing that couldn't be found
 	  count: Object containing a count on the number of files processed, and the number of errors found
-	  output: Formatted output for the terminal
-	  logfile: Formatted output for a logfile
 	}
 
 

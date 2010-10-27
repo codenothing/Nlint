@@ -1,4 +1,4 @@
-This implementation is a branch of [tav]'s original [nodelint.js]
+This implementation is a fork of [tav]'s original [nodelint.js]
 
 Nodelint
 ========
@@ -18,7 +18,7 @@ Installation
 
 1. Download and extract Nodelint into a path of your choice
 
-2. Add the alias to your bashrc file: alias jslint='node /path/to/Nodelint/index.js --Nodelint-cli "$@"'
+2. Add the alias to your bashrc file: alias jslint='node /path/to/Nodelint/index.js --Nodelint-cli -vp "$@"'
 
 3. Source your bashrc file, and your good to go.
 
@@ -31,7 +31,7 @@ You can also install Nodelint through npm if you like.
 
 	$ npm install Nodelint
 	$ echo "module.exports = require('Nodelint');" > ~/.Nodelint.js
-	$ echo "alias jslint='node ~/.Nodelint.js --Nodelint-cli \"\$@\"'" >> ~/.bashrc
+	$ echo "alias jslint='node ~/.Nodelint.js --Nodelint-cli -vp \"\$@\"'" >> ~/.bashrc
 	$ source ~/.bashrc
 
 	// Now we can use the jslint alias
@@ -62,11 +62,11 @@ Cli Usage
 
 You can autorun Nodelint based on command line arguments by passing the cli flag
 	
-	$ node Nodelint.js --Nodelint-cli [options] file.js [file2.js dir dir2]
+	$ node Nodelint.js --Nodelint-cli [options] file.js
 
 Nodelint comes with a cli script that will also force autorun without having to pass the cli flag.
 
-	$ node cli.js [options] file.js [file2.js dir dir2]
+	$ node cli.js [options] file.js
 
 Nodelint passes all non-nodelint options on as JSLINT options
 
@@ -87,7 +87,7 @@ You can create a bash alias to map your own command to jslint. Just add the foll
 
 And then you will be able to call Nodelint with jslint alias
 
-	$ jslint [options] file.js [file2.js dir dir2]
+	$ jslint [options] file.js
 
 
 

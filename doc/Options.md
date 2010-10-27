@@ -12,8 +12,8 @@ This object contains all the default settings for Nodelint the project.
 
 	// Nodelint options
 	{
-	  logfile ( -l *logfile* ): Path to a logfile to store the results. Defaults to null.
-	  jslint ( -j *custom jslint file* ): Path to custom JSLINT file. Defaults to null.
+	  logfile ( -l */path/to/logfile* ): Path to a logfile to store the results. Defaults to null.
+	  jslint ( -j */path/to/custom/jslint.js* ): Path to custom JSLINT file. Defaults to null.
 	  buffer-wait ( -b *milliseconds*): For pre-commit hooks and terminal output, time in milliseconds to wait for buffer to flush before exiting.
 	  verbose ( -v ): Print out processing information.
 	  show-passed ( -p ): Show list of files that passed JSLINT in output.
