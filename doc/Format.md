@@ -11,6 +11,7 @@ Format takes the result of a Render Object, formats the outputs, and sends back 
 	  logfile: Output formatted for a text file
 	  passes: Array of file paths that passed jslint
 	  errors: Array of objects containing files that didn't pass, and the errors found within
+	  ignored: Files that were ignored based on .lintignore file settings
 	  missing: Files missing that couldn't be found
 	  count: Object containing a count on the number of files processed, and the number of errors found
 	}

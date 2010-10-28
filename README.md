@@ -4,7 +4,7 @@ Nodelint
 ========
 
 Nodelint combines the power of [Node] and [JSLint] to parse through files or projects and find syntax errors. It can be
-used within your pre-commit hooks to force devs into complying with your standards, and just a general helper to clean out
+used within your pre-commit hooks to force scripts into complying with standards set, and is just a general helper to clean out
 javascript bugs. Here's a quick example:
 
 ![Nodelint Cli Example](http://www.cnstatic.com/images/github/Nodelint/example.png "Nodelint Cli Example")
