@@ -1,2 +1,5 @@
 # Ignore all swp files
 .*.swp
+
+# Also ignore the output from testing
+lint.out

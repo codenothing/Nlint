@@ -32,6 +32,7 @@ Options
 Tracking Instances
 ==================
 
+Calling the Tracking function returns a new instance of the Tracking object. Below are methods of importance.
 
 
 track.mark( [name, result] )

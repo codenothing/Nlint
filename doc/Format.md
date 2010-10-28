@@ -1,7 +1,7 @@
 Format.js
 =========
 
-Format takes the result of a Render Object, and formats the outputs, and sends back merged results.
+Format takes the result of a Render Object, formats the outputs, and sends back merged results.
 
 	// Object returned from Nodelint.Format
 	{
@@ -24,6 +24,7 @@ Usage
 		if ( e || ! results ) {
 			return Nodelint.error( e || "Invalid Project Path." );
 		}
+
 
 		// Get the formatted results
 		results = Nodelint.Format( results );

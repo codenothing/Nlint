@@ -10,4 +10,4 @@ NODE = node
 
 
 test:
-	@$(NODE) cli.js -vpw .
+	@$(NODE) index.js --Nodelint-cli -l lint.out -vmipw .
