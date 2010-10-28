@@ -3,11 +3,9 @@ This implementation is a fork of [tav]'s original [nodelint.js]
 Nodelint
 ========
 
-- [Node] is a [V8] based framework for writing javascript applications outside the browser.
-
-- [JSLint] is a code quality tool that checks for problems in javascript programs.
-
-- **Nodelint** Parses through files or projects to find syntax errors in your javascript files. Heres a quick example
+Nodelint combines the power of [Node] and [JSLint] to parse through files or projects and find syntax errors. It can be
+used within your pre-commit hooks to force devs into complying with your standards, and just a general helper to clean out
+javascript bugs. Here's a quick example:
 
 ![Nodelint Cli Example](http://www.cnstatic.com/images/github/Nodelint/example.png "Nodelint Cli Example")
 
@@ -153,18 +151,11 @@ And then put that jslint file in your Nodelint/lib/jslint/ directory, or add it 
 
 
 
-Default Options
----------------
+Options
+-------
 
 The package provides an Options.js file where default options for JSLINT and Nodelint can be set.
-Take a look at [JSLINT's Options] to see what to put in there.
-
-
-
-Contribute
-----------
-
-To contribute any patches, simply fork this repository using GitHub and send a pull request to me <<http://github.com/codenothing>>. Thanks!
+Take a look at docs/Options.md or [JSLINT's Options] to see what to put in there.
 
 
 
@@ -184,7 +175,6 @@ Credits
 
 
 [Node]: http://nodejs.org/
-[V8]: http://code.google.com/p/v8/
 [JSLint]: http://www.jslint.com/lint.html
 [JSLINT's Options]: http://www.jslint.com/lint.html#options
 [tav]: http://tav.espians.com
