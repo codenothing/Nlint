@@ -24,6 +24,7 @@ Nodelint( __dirname, function( e, results ) {
 	}
 	else {
 		sys.error( results.stderr );
+
 		// Terrible hack to ensure buffers clear
 		setTimeout(function(){
 			process.exit( 1 );
