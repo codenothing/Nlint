@@ -95,13 +95,13 @@ Pre-commit Hook
 Nodelint has a special operation for projects that want to use their version control pre-commit hooks.
 Just add the following line to your pre-commit bash script
 
-	node /path/to/Nodelint/index.js --Nodelint-pre-commit .
+	node /path/to/Nodelint/index.js --Nodelint-pre-commit=git
 
 On large projects, if there are many errors, node might not have enough time to flush it's buffers which
 will result in partial output. To fix this, you will need to increase the buffer wait time(in millisecongs)
 before Nodelint exits
 
-	node /path/to/Nodelint/index.js --Nodelint-pre-commit --buffer-wait=2000 .
+	node /path/to/Nodelint/index.js --Nodelint-pre-commit=git --buffer-wait=1500 .
 
 
 
