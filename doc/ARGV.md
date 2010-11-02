@@ -9,3 +9,6 @@ Usage
 
 	// Returns the array of files to be rendered
 	var Files = require('Nodelint').ARGV();
+
+	// If you need to send a custom list of arguments
+	var Files = require('Nodelint').ARGV( myargs );

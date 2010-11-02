@@ -1,7 +1,7 @@
 {
 	"name": "Nodelint",
-	"description": "[NPM TESTING]Nodelint is a tool that uses the power of JSLINT to parse your javascript files for errors.",
-	"version": "0.0.9",
+	"description": "Nodelint is a tool that uses the power of JSLINT to parse your javascript files for errors.",
+	"version": "[VERSION]",
 	"homepage": "http://www.codenothing.com/archives/2010/Nodelint/",
 	"author": "Corey Hart <corey@codenothing.com> (http://www.codenothing.com)",
 	"contributors": [
@@ -22,7 +22,8 @@
 		"lib": "./lib"
 	},
 	"bin": {
-		"jslint": "./jslint"
+		"jslint": "./bin/jslint",
+		"Nodelint": "./bin/Nodelint"
 	},
 	"main": "index",
 	"engines": {

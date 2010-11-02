@@ -12,5 +12,5 @@ var Nodelint = require('Nodelint');
 Nodelint.Options.nodelint.verbose = true;
 Nodelint.Options.nodelint[ 'show-passed' ] = true;
 
-// caling jslint directly, so no 'node nodelint.js'
-Nodelint.cli( 1 );
+// Trigger cli usage
+Nodelint.cli();
