@@ -16,8 +16,9 @@ Installation
 
  - Download and extract Nodelint into a path of your choice
 
- -a) Move the jslint bin file into your path, and change the require path to the correct Nodelint/index.js path
-	b) Add the alias to your bashrc file: alias jslint='node /path/to/Nodelint/cli.js -vp "$@"'
+ - a) Move the jslint bin file into your path, and change the require path to the correct Nodelint/index.js path
+
+ - b) Add the alias to your bashrc file: alias jslint='node /path/to/Nodelint/cli.js -vp "$@"'
 
  - Source your bashrc file, and your good to go.
 
