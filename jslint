@@ -1,0 +1,11 @@
+#! /usr/bin/env node
+#
+# Nodelint [VERSION]
+# [DATE]
+# A fork of tav's nodelint (http://github.com/tav/nodelint)
+# Corey Hart @ http://www.codenothing.com
+#
+
+
+# caling jslint directly, so no 'node nodelint.js'
+require('Nodelint').cli( 1 );
