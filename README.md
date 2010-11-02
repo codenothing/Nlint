@@ -14,13 +14,12 @@ javascript bugs. Here's a quick example:
 Installation
 ------------
 
-1. Download and extract Nodelint into a path of your choice
+ - Download and extract Nodelint into a path of your choice
 
-2a. Move the jslint bin file into your path, and change the require path to the correct Nodelint/index.js path
+ -a) Move the jslint bin file into your path, and change the require path to the correct Nodelint/index.js path
+	b) Add the alias to your bashrc file: alias jslint='node /path/to/Nodelint/cli.js -vp "$@"'
 
-2b. Add the alias to your bashrc file: alias jslint='node /path/to/Nodelint/cli.js -vp "$@"'
-
-3. Source your bashrc file, and your good to go.
+ - Source your bashrc file, and your good to go.
 
 
 
