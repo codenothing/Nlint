@@ -8,4 +8,4 @@
  */
 
 // Straight require, have to use cli arguments to trigger
-require('Nodelint');
+module.exports = require('Nodelint');

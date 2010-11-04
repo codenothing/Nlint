@@ -4,10 +4,14 @@
 # A fork of tav's nodelint (http://github.com/tav/nodelint)
 # Corey Hart @ http://www.codenothing.com
 #
-SH = sh
-NODE = node
 .PHONY: all test clean
 
 
+all:
+	@node build/build.js
+
+install:
+	@node build/install.js
+
 test:
-	@$(NODE) index.js --Nodelint-cli -l lint.out -vmipw .
+	@node index.js --Nodelint-cli -l lint.out -vmipw .

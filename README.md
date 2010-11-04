@@ -7,27 +7,27 @@ Nodelint combines the power of [Node] and [JSLint] to parse through files or pro
 used within your pre-commit hooks to force scripts into complying with standards set, and is just a general helper to clean out
 javascript bugs. Here's a quick example:
 
-![Nodelint Cli Example](http://www.cnstatic.com/images/github/Nodelint/example.png "Nodelint Cli Example")
+![Nodelint Example](http://www.cnstatic.com/images/github/Nodelint/example.png "Nodelint Example")
 
 
 
 Installation
 ------------
 
- - Download and extract Nodelint into a path of your choice
+Download and extract the Nodelint zip file. If you want the binfiles, then you will need to build it.
 
- - a) Move the jslint bin file into your path, and change the require path to the correct Nodelint/index.js path
+	$ ./configure
+	$ make
+	$ make install
 
- - b) Add the alias to your bashrc file: alias jslint='node /path/to/Nodelint/cli.js -vp "$@"'
-
- - Source your bashrc file, and your good to go.
-
+	// Now we can use the jslint binfile
+	$ jslint file.js
 
 
 NPM Installation
 ----------------------
 
-Installation is a breeze with npm, just install the Nodelint package, and your good to go.
+Nodelint is stored on the npm registry if needed.
 
 	// Install Nodelint
 	$ npm install Nodelint
@@ -55,53 +55,19 @@ Installation is a breeze with npm, just install the Nodelint package, and your g
 
 
 
-Cli Usage
----------
-
-You can autorun Nodelint based on command line arguments by passing the cli flag
-	
-	$ node Nodelint.js --Nodelint-cli [options] file.js
-
-Nodelint comes with a cli script that will also force autorun without having to pass the cli flag.
-
-	$ node cli.js [options] file.js
-
-Nodelint passes all non-nodelint options on as JSLINT options
-
-	$ node cli.js --adsafe=true file.js
-
-Nodelint also allows you to store the results into a logfile of your choosing
-
-	$ node cli.js -l logfile.out file.js
-
-
-
-Bash Alias
-----------
-
-You can create a bash alias to map your own command to jslint. Just add the following to your bashrc file
-	
-	alias jslint='node /path/to/Nodelint/cli.js "$@"'
-
-And then you will be able to call Nodelint with jslint alias
-
-	$ jslint [options] file.js
-
-
-
 Pre-commit Hook
 ---------------
 
 Nodelint has a special operation for projects that want to use their version control pre-commit hooks.
 Just add the following line to your pre-commit bash script
 
-	node /path/to/Nodelint/index.js --Nodelint-pre-commit=git
+	Nodelint --Nodelint-pre-commit=git
 
 On large projects, if there are many errors, node might not have enough time to flush it's buffers which
 will result in partial output. To fix this, you will need to increase the buffer wait time(in millisecongs)
 before Nodelint exits
 
-	node /path/to/Nodelint/index.js --Nodelint-pre-commit=git --buffer-wait=1500 .
+	Nodelint --Nodelint-pre-commit=git --buffer-wait=1500 .
 
 
 
@@ -110,7 +76,7 @@ Nodelint Usage
 
 Nodelint can be included into your project or build process easily. Here's a quick example
 
-	var Nodelint = require('Nodelint'), sys = require('sys'), fs = require('fs');
+	var Nodelint = require('/path/to/Nodelint'), sys = require('sys'), fs = require('fs');
 
 	Nodelint( '/path/to/myproject', function( e, results ) {
 		if ( e ) {
@@ -140,13 +106,16 @@ Custom JSLINT
 -------------
 
 The current package comes with the latest version of JSLINT(2010-10-16). To add your own custom version,
-or to update to a newer version of JSLINT, add the following as the last line of the jslint.js file.
+or to update to a newer version of JSLINT, add the following as the last line of the jslint.js file, and
+overwrite the default jslint in your Nodelint/lib/jslint/ directory.
 
 	exports.JSLINT = JSLINT;
 
-And then put that jslint file in your Nodelint/lib/jslint/ directory, or add it as a cli option
+You can also configure into your binfiles a path to the jslint file you want to use.
 
-	$ node cli.js --jslint=/path/to/my/jslint.js file.js
+	$ ./configure --jslint=/path/to/jslint.js
+	$ make
+	$ make intall
 
 
 

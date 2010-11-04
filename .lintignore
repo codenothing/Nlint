@@ -8,3 +8,6 @@ lib/vim/
 # For testing purposes
 test/ignore*
 test/*ignore*
+
+# Needs leading zero
+build/build.js
