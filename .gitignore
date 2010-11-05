@@ -2,9 +2,7 @@
 .*.swp
 
 # Ignore build files
-build/.config
-build/Nodelint
-build/jslint
+dist/
 
 # Also ignore the output from testing
 lint.out

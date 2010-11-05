@@ -4,7 +4,7 @@ Tracking.js
 Tracking.js is a utility module that helps with tracking asynchronous events.
 
 
-Tracking( name, [options,] callback)
+Tracking( name, [options,] callback )
 ------------------------------------
 
 Tracking is the main constructor. It takes three arguments.

@@ -1,51 +1,37 @@
 Installation
 ------------
 
-1. Download and extract Nodelint into a path of your choice
+Download and extract the Nodelint zip file. If you want the binfiles, then you will need to build it.
 
-2. Add the alias to your bashrc file: alias jslint='node /path/to/Nodelint/cli.js -vp "$@"'
+	$ ./configure
+	$ make
+	$ make install
 
-3. Source your bashrc file, and your good to go.
-
-
-
-NPM Installation
-----------------
-
-You can also install Nodelint through npm if you like.
-
-	$ npm install Nodelint
-	$ echo "require('Nodelint').cli();" > ~/.Nodelint.js
-	$ echo "alias jslint='node ~/.Nodelint.js -vp \"\$@\"'" >> ~/.bashrc
-	$ source ~/.bashrc
-
-	// Now we can use the jslint alias
+	// Now we can use the jslint binfile
 	$ jslint file.js
 
 
+NPM Installation
+----------------------
 
-Recommendation
---------------
+Nodelint is stored on the npm registry if needed.
 
-To get the most use out of Nodelint, I suggest you add a ".Nodelint.js" to your home directory. If you
-downloaded the src package, then add the following to .Nodelint.js:
+	// Install Nodelint
+	$ npm install Nodelint
 
-	module.exports = require('/path/to/Nodelint');
+	// Now we can use the jslint binfile
+	$ jslint file.js
 
-If you installed Nodelint via NPM, then add the following to .Nodelint.js instead:
 
-	module.exports = require('Nodelint');
+Configuration
+-------------
 
-This will give you quick access to the full Nodelint api. That way, if you want to bring Nodelint into your
-project for testing, you can just add it to your require declaration:
+There are a few configuration options
 
-	// Get Nodelint
-	var Nodelint = require('~/.Nodelint');
+ - **jslint**: Path to a custom jslint file
 
-And you can easily add it to your pre-commit bash scripts with:
+ - **prefix**: Path to installation prefix, defaults to install path of node
 
-	node ~/.Nodelint.js --Nodelint-pre-commit .
+ - **blocklibs**: Block installation of Nodelint.js on the requires path
 
-Of course, you will have to modify your jslint alias with the following to force autorun:
-
-	alias jslint='node ~/.Nodelint.js --Nodelint-cli -vp "$@"'
+	./configure --jslint=/path/to/custom/jslint.js --prefix=/path/to/my/installationPrefix --blocklibs

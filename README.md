@@ -76,7 +76,7 @@ Nodelint Usage
 
 Nodelint can be included into your project or build process easily. Here's a quick example
 
-	var Nodelint = require('/path/to/Nodelint'), sys = require('sys'), fs = require('fs');
+	var Nodelint = require('Nodelint'), sys = require('sys'), fs = require('fs');
 
 	Nodelint( '/path/to/myproject', function( e, results ) {
 		if ( e ) {

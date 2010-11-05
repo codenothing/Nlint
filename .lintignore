@@ -11,3 +11,4 @@ test/*ignore*
 
 # Needs leading zero
 build/build.js
+build/install.js

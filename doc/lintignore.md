@@ -22,6 +22,13 @@ works backwards to pick it up.
 	// And then it will continue looking for .lintignore files in every sub directory of your project
 
 
+lintignore.vim
+--------------
+
+Nodelint comes with a vim syntax highlighter for lintignore files, located in Nodelint/lib/vim/. To install it,
+move it into your vim syntax directory.
+
+
 Usage
 =====
 	# Ignore jquery as it doesn't pass my version of JSLINT, but is browser safe

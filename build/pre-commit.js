@@ -4,10 +4,11 @@
  * A fork of tav's nodelint (http://github.com/tav/nodelint)
  * Corey Hart @ http://www.codenothing.com
  */
-var Nodelint = require('./lib/nodelint/Nodelint'), sys = require('sys');
+var Nodelint = require('../lib/nodelint/Nodelint'),
+	sys = require('sys'), root = __dirname.replace( /build\/?/, '/' );
 
 // Custom pre-commit hook for Nodelint
-Nodelint( __dirname, function( e, results ) {
+Nodelint( [ root, root + 'configure' ], function( e, results ) {
 	// Unknown Error
 	if ( e ) {
 		sys.error( e.message || e );

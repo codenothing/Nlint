@@ -28,7 +28,7 @@ Usage
 
 
 		// Get the formatted results
-		results = Nodelint.Format( results );
+		results = Nodelint.Format( results, options );
 
 
 		if ( results.errors.length ) {
