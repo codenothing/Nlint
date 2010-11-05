@@ -28,7 +28,7 @@ SVN Pre-Commit
 
 If you are using svn, add the following to your PATH_TO_REPOS/project/hooks/pre-commit file
 
-	Nodelint --Nodelint-pre-commit=svn $(svnlook changed --transaction $2 $1 | cut -c8-)
+	Nodelint --Nodelint-pre-commit=svn $(svnlook changed --transaction $2 $1 | cut -c4-)
 
 This will run JSLint on all files that are going to be committed, and block the transaction if any errors
 are found. If you want to lint your entire project on every commit, add the following instead.
@@ -57,7 +57,7 @@ Recommendation
 --------------
 
 Download the Nodelint src, and add it as a tool to your project. Both svn and git set the current working directory to your repo root,
-so if you put Nodelint in a path like "myproject/tools/Nodelint", and can use a variation of the above methods
+so if you put Nodelint in a path like "myproject/tools/Nodelint", and then add the following to your pre-commit file.
 
 	node tools/Nodelint/index.js --Nodelint-pre-commit=git
 

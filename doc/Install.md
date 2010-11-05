@@ -34,4 +34,7 @@ There are a few configuration options
 
  - **blocklibs**: Block installation of Nodelint.js on the requires path
 
+
+Here's a sample config
+
 	./configure --jslint=/path/to/custom/jslint.js --prefix=/path/to/my/installationPrefix --blocklibs
