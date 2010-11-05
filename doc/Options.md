@@ -20,7 +20,7 @@ This object contains all the default settings for Nodelint the project.
 	  show-ignored ( -i ): Show list of files ignored during rendering.
 	  show-missing ( -m ): Show expected files that were missing during rendering.
 	  show-warnings ( -w ): Prints out warning messages during processing.
-	  Nodelint-cli: Forcing auto-cli from Nodelint module(No need to call cli.js).
+	  Nodelint-cli: Forcing auto-cli from Nodelint module.
 	  Nodelint-pre-commit: For use in pre-commit hooks, can lint projects before allowing devs to commit.
 	}
 
