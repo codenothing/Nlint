@@ -8,7 +8,7 @@ var Nodelint = require('../lib/nodelint/Nodelint'),
 	sys = require('sys'), root = __dirname.replace( /build\/?/, '/' );
 
 // Custom pre-commit hook for Nodelint
-Nodelint( [ root, root + 'configure' ], function( e, results ) {
+Nodelint( root, function( e, results ) {
 	// Unknown Error
 	if ( e ) {
 		sys.error( e.message || e );

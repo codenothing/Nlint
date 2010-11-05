@@ -9,6 +9,7 @@
 var sys = require('sys'),
 	fs = require('fs'),
 	path = require('path'),
+	dist = __dirname + '/dist/',
 	rdash = /^--/,
 	marker = 0,
 	normalize = { jslint: true, prefix: true };
@@ -17,6 +18,26 @@ var sys = require('sys'),
 		prefix: process.installPrefix,
 		blocklibs: false
 	};
+
+
+// Creates the directory if it doesn't exist
+function mkdir( dir, callback ) {
+	path.exists( dir, function( exists ) {
+		if ( exists ) {
+			callback();
+		}
+		else {
+			fs.mkdir( dir, 0755, function( e ) {
+				if ( e ) {
+					sys.error( e );
+					process.exit( 1 );
+				}
+
+				callback();
+			});
+		}
+	});
+}
 
 
 // Set options
@@ -35,9 +56,11 @@ process.argv.forEach(function( arg ) {
 
 
 // Store configuration
-fs.writeFile( __dirname + '/dist/.config', JSON.stringify( config ), 'utf8', function( e ) {
-	if ( e ) {
-		sys.error( e );
-		process.exit( 1 );
-	}
+mkdir( dist, function(){
+	fs.writeFile( dist + '.config', JSON.stringify( config ), 'utf8', function( e ) {
+		if ( e ) {
+			sys.error( e );
+			process.exit( 1 );
+		}
+	});
 });
