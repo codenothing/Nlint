@@ -6,18 +6,22 @@
  * A fork of tav's nodelint (http://github.com/tav/nodelint)
  * Corey Hart @ http://www.codenothing.com
  */
-var sys = require('sys'),
+var Nodelint = require('./lib/nodelint/Nodelint'),
+	sys = require('sys'),
 	fs = require('fs'),
 	path = require('path'),
 	dist = __dirname + '/dist/',
 	rdash = /^--/,
 	marker = 0,
-	normalize = { jslint: true, prefix: true };
-	config = {
-		jslint: null,
-		prefix: process.installPrefix,
-		blocklibs: false
-	};
+	normalize = { jslint: true, prefix: true },
+	args = process.argv.slice( 1 ), argv;
+
+// Add configurables not in options
+Nodelint.extend( Nodelint.Options.nodelint, {
+	jslint: null,
+	prefix: process.installPrefix,
+	blocklibs: false
+});
 
 
 // Creates the directory if it doesn't exist
