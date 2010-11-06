@@ -6,5 +6,5 @@
  * A fork of tav's nodelint (http://github.com/tav/nodelint)
  * Corey Hart @ http://www.codenothing.com
  */
-global._NodelintOptions = { nodelint: { verbose: true, 'show-passed': true } };
+global._NodelintOptions = { verbose: true, 'show-passed': true };
 require('Nodelint').cli();

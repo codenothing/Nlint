@@ -9,19 +9,18 @@ var sys = require('sys'),
 	path = require('path'),
 	root = __dirname.replace( /\/build\/?/, '' ),
 	dist = root + '/dist/',
-	config = {},
 	Templates = {
 		// JSlint binfile
 		jslint: [
 			"#! /usr/bin/env node\n",
-			"global._NodelintOptions = { nodelint: { jslint: '#{jslint}', verbose: true, 'show-passed': true } };\n",
-			"require('" + root + "').cli();"
+			"global._NodelintOptions = #{config};\n",
+			"require('" + root + "').Cli();"
 		].join(''),
 
 		// Nodelint binfile
 		Nodelint: [
 			"#! /usr/bin/env node\n",
-			"global._NodelintOptions = { nodelint: { jslint: '#{jslint}' } };\n",
+			"global._NodelintOptions = #{config};\n",
 			"modules.exports = require('" + root + "');"
 		].join('')
 	};
@@ -48,8 +47,8 @@ function mkdir( dir, callback ) {
 
 
 // Building binfiles
-function buildfile( name ) {
-	fs.writeFile( dist + name, Templates[ name ].replace( /#\{jslint\}/, config.jslint || '' ), 'utf8', function( e ) {
+function buildfile( name, config ) {
+	fs.writeFile( dist + name, Templates[ name ].replace( /#\{config\}/, config || 'null' ), 'utf8', function( e ) {
 		if ( e ) {
 			sys.error( e );
 			process.exit( 1 );
@@ -76,7 +75,13 @@ mkdir( dist, function(){
 			process.exit( 1 );
 		}
 
-		config = JSON.parse( data );
-		[ 'jslint', 'Nodelint' ].forEach( buildfile );
+		// No change to Nodelint
+		buildfile( 'Nodelint', data );
+
+		// Show more information for jslint binfile
+		var config = JSON.parse( data );
+		config.verbose = true;
+		config[ 'show-passed' ] = true;
+		buildfile( 'jslint', JSON.stringify( config ) );
 	});
 });

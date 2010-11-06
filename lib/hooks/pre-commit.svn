@@ -7,10 +7,10 @@
 #
 
 # For running jslint only on files being committed (have to use svnlook hack to list out files with changes)
-node /path/to/Nodelint/index.js --Nodelint-pre-commit=svn $(svnlook changed --transaction $2 $1 | cut -c4-)
+Nodelint --Nodelint-pre-commit=svn $(svnlook changed --transaction $2 $1 | cut -c4-)
 
 # For running jslint only on a subset of files
-node /path/to/Nodelint/index.js --Nodelint-pre-commit-all dir1/ dir2/ dir3/ file.js
+Nodelint --Nodelint-pre-commit-all dir1/ dir2/ dir3/ file.js
 
 # For running jslint on the entire project
-node /path/to/Nodelint/index.js --Nodelint-pre-commit-all
+Nodelint --Nodelint-pre-commit-all

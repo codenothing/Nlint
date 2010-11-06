@@ -7,10 +7,10 @@
 #
 
 # For running jslint only on files being committed
-node /path/to/Nodelint/index.js --Nodelint-pre-commit=git
+Nodelint --Nodelint-pre-commit=git
 
 # For running jslint only on a subset of files
-node /path/to/Nodelint/index.js --Nodelint-pre-commit-all dir1/ dir2/ dir3/ file.js
+Nodelint --Nodelint-pre-commit-all dir1/ dir2/ dir3/ file.js
 
 # For running jslint on the entire project
-node /path/to/Nodelint/index.js --Nodelint-pre-commit-all
+Nodelint --Nodelint-pre-commit-all
