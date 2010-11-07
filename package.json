@@ -4,6 +4,11 @@
 	"version": "[VERSION]",
 	"homepage": "http://www.codenothing.com/archives/2010/Nodelint/",
 	"author": "Corey Hart <corey@codenothing.com> (http://www.codenothing.com)",
+	"main": "index",
+	"man": [
+		"./man1/Nodelint.1",
+		"./man1/jslint.1"
+	],
 	"contributors": [
 		"tav <tav@espians.com> (http://tav.espians.com)",
 		"Felix Geisendörfer (http://debuggable.com)",
@@ -19,13 +24,13 @@
 	},
 	"directories": {
 		"doc": "./doc",
-		"lib": "./lib"
+		"lib": "./lib",
+		"man": "./man1"
 	},
 	"bin": {
 		"jslint": "./bin/jslint",
 		"Nodelint": "./bin/Nodelint"
 	},
-	"main": "index",
 	"engines": {
 		"node": ">= 0.2.0"
 	},
