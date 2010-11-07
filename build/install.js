@@ -8,7 +8,9 @@ var sys = require('sys'),
 	fs = require('fs'),
 	path = require('path'),
 	exec = require('child_process').exec,
-	dist = __dirname.replace( /build\/?$/, 'dist/' ),
+	root = __dirname.replace( /build\/?$/, '' ),
+	dist = root + 'dist/',
+	man1 = root + 'man1/*',
 	config = {}, prefix = '';
 
 
@@ -44,6 +46,26 @@ function install( file ) {
 		}
 		sys.puts( 'Installed ' + to );
 	});
+}
+
+
+
+function manfiles( dirs ) {
+	if ( dirs.length ) {
+		return mkdir( dirs.shift(), function(){
+			manfiles( dirs );
+		});
+	}
+	else {
+		exec( 'cp ' + man1 + ' ' + prefix + 'share/man/man1/', function( e ) {
+			if ( e ) {
+				sys.error( e );
+				process.exit( 1 );
+			}
+
+			sys.puts( 'Installed manfiles in ' + prefix + 'share/man/man1/' );
+		});
+	}
 }
 
 
@@ -93,9 +115,17 @@ fs.readFile( dist + '.config', 'utf8', function( e, data ) {
 			sys.error( "The install prefix doesn't exist: " + prefix );
 		}
 
+		// Binfiles
 		mkdir( prefix + 'bin/', function(){
 			[ 'jslint', 'Nodelint' ].forEach( install );
 		});
+
+		// manfiles
+		manfiles([
+			prefix + 'share/',
+			prefix + 'share/man/',
+			prefix + 'share/man/man1/'
+		]);
 	});
 
 	if ( ! config.blocklibs ) {
