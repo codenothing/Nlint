@@ -8,7 +8,7 @@ var Nodelint = require('../lib/nodelint/Nodelint'),
 	sys = require('sys'), root = __dirname.replace( /build\/?/, '/' );
 
 // Custom pre-commit hook for Nodelint
-Nodelint( [ root, root + 'bin/Nodelint', root + 'bin/jslint' ], function( e, results ) {
+Nodelint( root, function( e, results ) {
 	// Unknown Error
 	if ( e ) {
 		sys.error( e.message || e );
@@ -29,6 +29,6 @@ Nodelint( [ root, root + 'bin/Nodelint', root + 'bin/jslint' ], function( e, res
 		// Terrible hack to ensure buffers clear
 		setTimeout(function(){
 			process.exit( 1 );
-		}, Nodelint.Options.nodelint[ 'buffer-wait' ] );
+		}, Nodelint.Options[ 'buffer-wait' ] );
 	}
 });

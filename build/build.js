@@ -8,22 +8,13 @@ var sys = require('sys'),
 	fs = require('fs'),
 	path = require('path'),
 	root = __dirname.replace( /\/build\/?/, '' ),
-	dist = root + '/dist/',
-	Templates = {
-		// JSlint binfile
-		jslint: [
-			"#! /usr/bin/env node\n",
-			"global._NodelintOptions = #{config};\n",
-			"require('" + root + "').Cli();"
-		].join(''),
+	dist = root + '/dist/';
 
-		// Nodelint binfile
-		Nodelint: [
-			"#! /usr/bin/env node\n",
-			"global._NodelintOptions = #{config};\n",
-			"modules.exports = require('" + root + "');"
-		].join('')
-	};
+
+// Default error handling
+function error( e ) {
+	sys.error( "\x1B[1;31m" + ( e.message || e ) + "\x1B[0m" );
+}
 
 
 // Creates the directory if it doesn't exist
@@ -35,8 +26,7 @@ function mkdir( dir, callback ) {
 		else {
 			fs.mkdir( dir, 0755, function( e ) {
 				if ( e ) {
-					sys.error( e );
-					process.exit( 1 );
+					error( e );
 				}
 
 				callback();
@@ -47,17 +37,15 @@ function mkdir( dir, callback ) {
 
 
 // Building binfiles
-function buildfile( name, config ) {
-	fs.writeFile( dist + name, Templates[ name ].replace( /#\{config\}/, config || 'null' ), 'utf8', function( e ) {
+function buildfile( name, file ) {
+	fs.writeFile( dist + name, file, 'utf8', function( e ) {
 		if ( e ) {
-			sys.error( e );
-			process.exit( 1 );
+			error( e );
 		}
 
 		fs.chmod( dist + name, 0755, function( e ) {
 			if ( e ) {
-				sys.error( e );
-				process.exit( 1 );
+				error( e );
 			}
 			else {
 				sys.puts( name + " built." );
@@ -71,17 +59,25 @@ function buildfile( name, config ) {
 mkdir( dist, function(){
 	fs.readFile( dist + '.config', 'utf8', function( e, data ) {
 		if ( e ) {
-			sys.error( e );
+			error( "Could not find configuration, did you run configure? - " + e );
 			process.exit( 1 );
 		}
 
-		// No change to Nodelint
-		buildfile( 'Nodelint', data );
+		fs.readFile( __dirname + '/template', 'utf8', function( e, template ) {
+			if ( e ) {
+				error( e );
+				process.exit( 1 );
+			}
 
-		// Show more information for jslint binfile
-		var config = JSON.parse( data );
-		config.verbose = true;
-		config[ 'show-passed' ] = true;
-		buildfile( 'jslint', JSON.stringify( config ) );
+			// No change to Nodelint
+			buildfile( 'Nodelint', template.replace( /#\{config\}/, data || 'null' ).replace( /#\{path\}/, root ) );
+
+			// Show more information for jslint binfile
+			var config = JSON.parse( data );
+			config.verbose = true;
+			config[ 'Nodelint-cli' ] = true;
+			config[ 'show-passed' ] = true;
+			buildfile( 'jslint', template.replace( /#\{config\}/, JSON.stringify( config ) ).replace( /#\{path\}/, root ) );
+		});
 	});
 });

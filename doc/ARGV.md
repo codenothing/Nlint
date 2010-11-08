@@ -8,7 +8,7 @@ Usage
 =====
 
 	// Parse command line arguments
-	var argv = require('Nodelint').ARGV();
+	var argv = require('Nodelint').ARGV( defaultOptions );
 	
 	// Files that need to be rendered
 	argv.files
@@ -19,4 +19,4 @@ Usage
 You can also pass in a custom set of arguments if needed.
 
 	// If you need to send a custom list of arguments
-	var argv = require('Nodelint').ARGV( myargs );
+	var argv = require('Nodelint').ARGV( defaultOptions, myargs );

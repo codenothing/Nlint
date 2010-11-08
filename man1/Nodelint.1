@@ -37,7 +37,7 @@ Output missing files that were expected\.
 .SS "\-w, \-\-show\-warnings"
 Output warning messages during processing\.
 .
-.SS "\-\-Nodelint\-Cli"
+.SS "\-\-Nodelint\-cli"
 Trigger Cli run of arguments\.
 .
 .SS "\-\-Nodelint\-pre\-commit=\fIVCS\fR"
@@ -45,3 +45,10 @@ Run the pre\-commit hook on files to be commited for the version control system 
 .
 .SS "\-\-Nodelint\-pre\-commit\-all"
 Run Nodelint across the entire project before, and block commit on error\.
+.
+.SH "JSLint Options"
+JSLint options can be passed through the command line as well. Check out http://www.jslint.com/lint.html#options for a list 
+of settings.
+.
+.SH "Using JSLint Options"
+Nodelint --adsafe=true [more options] file.js

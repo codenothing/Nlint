@@ -7,6 +7,7 @@
  * Corey Hart @ http://www.codenothing.com
  */
 var Nodelint = require('./lib/nodelint/Nodelint'),
+	Color = Nodelint.Color,
 	sys = require('sys'),
 	fs = require('fs'),
 	path = require('path'),
@@ -27,7 +28,7 @@ function mkdir( dir, callback ) {
 		else {
 			fs.mkdir( dir, 0755, function( e ) {
 				if ( e ) {
-					sys.error( e );
+					sys.error( Color.boldred( e ) );
 					process.exit( 1 );
 				}
 
@@ -42,7 +43,10 @@ function mkdir( dir, callback ) {
 Nodelint.extend( Nodelint.Options, {
 	jslint: null,
 	prefix: process.installPrefix,
-	blocklibs: false
+	libpath: null,
+	'no-Nodelint': false,
+	'no-jslint': false,
+	'no-libfile': false
 });
 
 
@@ -52,7 +56,7 @@ mkdir( dist, function(){
 	argv = Nodelint.ARGV( Nodelint.Options, process.argv.slice( 1 ) );
 
 	// Ensure absolute paths
-	[ 'jslint', 'prefix' ].forEach(function( name ) {
+	[ 'jslint', 'prefix', 'libpath' ].forEach(function( name ) {
 		var value = argv.options[ name ];
 		if ( value ) {
 			argv.options[ name ] = path.normalize(
@@ -66,7 +70,7 @@ mkdir( dist, function(){
 	// Stash configuration
 	fs.writeFile( dist + '.config', JSON.stringify( argv.options ), 'utf8', function( e ) {
 		if ( e ) {
-			sys.error( e );
+			sys.error( Color.boldred( e ) );
 			process.exit( 1 );
 		}
 	});

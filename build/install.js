@@ -10,8 +10,13 @@ var sys = require('sys'),
 	exec = require('child_process').exec,
 	root = __dirname.replace( /build\/?$/, '' ),
 	dist = root + 'dist/',
-	man1 = root + 'man1/*',
 	config = {}, prefix = '';
+
+
+// Default error handling
+function error( e ) {
+	sys.error( "\x1B[1;31m" + ( e.message || e ) + "\x1B[0m" );
+}
 
 
 // Creates the directory if it doesn't exist
@@ -23,8 +28,7 @@ function mkdir( dir, callback ) {
 		else {
 			fs.mkdir( dir, 0755, function( e ) {
 				if ( e ) {
-					sys.error( e );
-					process.exit( 1 );
+					error( e );
 				}
 
 				callback();
@@ -36,13 +40,18 @@ function mkdir( dir, callback ) {
 
 // Installs binfiles
 function install( file ) {
+	// Ensure dev wants the binfile
+	if ( config[ 'no-' + file ] ) {
+		return;
+	}
+
+	// Shortcut paths
 	var from = dist + file,
 		to = path.normalize( prefix + 'bin/' + file );
 
 	exec( 'cp ' + from + ' ' + to, function( e ) {
 		if ( e ) {
-			sys.error( e );
-			process.exit( 1 );
+			error( e );
 		}
 		sys.puts( 'Installed ' + to );
 	});
@@ -50,30 +59,30 @@ function install( file ) {
 
 
 
-function manfiles( dirs ) {
-	if ( dirs.length ) {
-		return mkdir( dirs.shift(), function(){
-			manfiles( dirs );
-		});
+function manfiles( file ) {
+	// Ensure dev wants the binfile
+	if ( config[ 'no-' + file ] ) {
+		return;
 	}
-	else {
-		exec( 'cp ' + man1 + ' ' + prefix + 'share/man/man1/', function( e ) {
-			if ( e ) {
-				sys.error( e );
-				process.exit( 1 );
-			}
 
-			sys.puts( 'Installed manfiles in ' + prefix + 'share/man/man1/' );
-		});
-	}
+	// Shortcut paths
+	var from = root + 'man1/' + file + '.1',
+		to = prefix + 'share/man/man1/' + file + '.1';
+
+	exec( 'cp ' + from + ' ' + to, function( e ) {
+		if ( e ) {
+			error( e );
+		}
+
+		sys.puts( 'Installed ' + to );
+	});
 }
 
 
 // Installing lib file
 function libfile( i ) {
 	if ( i >= require.paths.length ) {
-		sys.error( "Could not find path to install lib files." );
-		process.exit( 1 );
+		error( "Could not find path to install lib files." );
 	}
 
 	path.exists( require.paths[ i ], function( exists ) {
@@ -83,8 +92,7 @@ function libfile( i ) {
 
 		exec( 'cp ' + dist + 'Nodelint ' + require.paths[ i ] + '/Nodelint.js', function( e ) {
 			if ( e ) {
-				sys.error( e );
-				process.exit( 1 );
+				error( e );
 			}
 
 			sys.puts( 'Installed ' + require.paths[ i ] + '/Nodelint.js' );
@@ -96,8 +104,7 @@ function libfile( i ) {
 // Read configuration values
 fs.readFile( dist + '.config', 'utf8', function( e, data ) {
 	if ( e ) {
-		sys.error( e );
-		process.exit( 1 );
+		error( e );
 	}
 
 	// Set configurations
@@ -105,14 +112,14 @@ fs.readFile( dist + '.config', 'utf8', function( e, data ) {
 	prefix = ( config.prefix || process.installPrefix );
 
 	// Ensure trailing slash
-	if ( prefix[ prefix.length ] != '/' ) {
+	if ( prefix[ prefix.length - 1 ] != '/' ) {
 		prefix += '/';
 	}
 
 	// Install prefixs
 	path.exists( prefix, function( exists ) {
 		if ( ! exists ) {
-			sys.error( "The install prefix doesn't exist: " + prefix );
+			error( "The install prefix doesn't exist: " + prefix );
 		}
 
 		// Binfiles
@@ -121,14 +128,32 @@ fs.readFile( dist + '.config', 'utf8', function( e, data ) {
 		});
 
 		// manfiles
-		manfiles([
-			prefix + 'share/',
-			prefix + 'share/man/',
-			prefix + 'share/man/man1/'
-		]);
+		mkdir( prefix + 'share/', function(){
+			mkdir( prefix + 'share/man/', function(){
+				mkdir( prefix + 'share/man/man1/', function(){
+					[ 'jslint', 'Nodelint' ].forEach( manfiles );
+				});
+			});
+		});
 	});
 
-	if ( ! config.blocklibs ) {
-		libfile( 0 );
+	// Libfile installation
+	if ( ! config[ 'no-libfile' ] ) {
+		if ( ! config.libpath ) {
+			libfile( 0 );
+		}
+		else {
+			if ( config.libpath[ config.libpath.length - 1 ] != '/' ) {
+				config.libpath += '/';
+			}
+
+			exec( 'cp ' + dist + 'Nodelint ' + config.libpath + 'Nodelint.js', function( e ) {
+				if ( e ) {
+					error( e );
+				}
+
+				sys.puts( 'Installed ' + config.libpath + 'Nodelint.js' );
+			});
+		}
 	}
 });

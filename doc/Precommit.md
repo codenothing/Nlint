@@ -44,9 +44,9 @@ everything but the first line with the shebang telling what env to use. Also, it
 Buffers
 -------
 
-If you run Nodelint on a large project that produces many errors, you may run into half finished report problem. This 
-happens because node exits before it's buffers finish writing, and cause weirdness with the terminal. If you experience this,
-just increase the buffer wait time, which is currently defaulted to 400 milliseconds.
+If you run Nodelint on a large project that produces many errors, you may run into a half finished report problem. This 
+happens because node exits before it's buffers finish writing, and can cause color confusion in the terminal. If you 
+experience this, just increase the buffer wait time, which is currently defaulted to 400 milliseconds.
 
 	Nodelint --Nodelint-pre-commit=git -b 1500
 
