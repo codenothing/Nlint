@@ -20,7 +20,7 @@ are found. If you want to lint your entire project on every commit, add the foll
 Just remember to set your .lintignore script(s) to block linting of files you know will fail.  
   
 If you have yet to create a pre-commit hook, just move the pre-commit.sample file to pre-commit, and remove
-everything but the first line with the shebang telling what env to use.
+everything but the first line with the shebang telling what env to use. Make sure it is executable.
 
 
 SVN Pre-Commit
@@ -38,7 +38,11 @@ are found. If you want to lint your entire project on every commit, add the foll
 Just remember to set your .lintignore script(s) to block linting of files you know will fail.  
   
 If you have yet to create a pre-commit hook, just move the pre-commit.tmpl file to pre-commit, and remove
-everything but the first line with the shebang telling what env to use. Also, it will need to be executable.
+everything but the first line with the shebang telling what env to use. Make sure it is executable.  
+  
+
+**Note:** If you built node with a differen't install path then the default /usr/local/, then you will have to
+use the full path to Nodelint binfile to use it in svn pre-commit hooks.
 
 
 Buffers
@@ -56,8 +60,9 @@ The above will increase wait time to 1.5 seconds, a bit extreme, but will cover 
 Recommendation
 --------------
 
-Download the Nodelint src, and add it as a tool to your project. Both svn and git set the current working directory to your repo root,
-so if you put Nodelint in a path like "myproject/tools/Nodelint", and then add the following to your pre-commit file.
+Download the Nodelint src, and add it as a tool to your project(you can just add the lib/nodelint/ directory, as it has everything you need).
+Both svn and git set the current working directory to your repo root, so if you put Nodelint in a path like 
+"myproject/tools/Nodelint", and then add the following to your pre-commit file.
 
 	node tools/Nodelint/index.js --Nodelint-pre-commit=git
 

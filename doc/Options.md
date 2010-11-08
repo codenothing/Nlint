@@ -1,41 +1,45 @@
 Options.js
 ==========
 
-Options.js contains the options object of default settings for Nodelint and JSLINT. There are three sections.
+Options.js contains the options object of default settings for Nodelint and JSLint.  
+  
+  
+
+ - **-l FILE, --logfile=FILE:** Define a logfile to output results to.
+
+ - **-j FILE, --jslint=FILE:** Define a custom jslint file to use.
+
+ - **-b TIME, --buffer-wait=TIME:** Define the number of milliseconds(TIME) to wait for buffer output to finish before killing the process. Usefull for pre-commit hooks.
+
+ - **-v, --verbose:** Verbose mode. Outputs processing information like what directory is currently being read, or what file is currently being linted.
+
+ - **-p, --show-passed:** Output list of files that passed jslint.
+
+ - **-i, --show-ignored:** Output list of files ignored based on lintignore files.
+
+ - **-m, --show-missing:** Output missing files that were expected.
+
+ - **-w, --show-warnings:** Output warning messages during processing.
+
+ - **--Nodelint-cli:** Trigger Cli run of arguments.
+
+ - **--Nodelint-pre-commit:VCS** Run the pre-commit hook on files to be commited for the version control system defined. Blocks commit on error.
+
+ - **--Nodelint-pre-commit-all:** Run Nodelint across the entire project before, and block commit on error.
 
 
 
-nodelint
---------
-
-This object contains all the default settings for Nodelint the project.
-
-	// Nodelint options
-	{
-	  logfile ( -l /path/to/logfile ): Path to a logfile to store the results. Defaults to null.
-	  jslint ( -j /path/to/custom/jslint.js ): Path to custom JSLINT file. Defaults to null.
-	  buffer-wait ( -b milliseconds): For pre-commit hooks and terminal output, time in milliseconds to wait for buffer to flush before exiting.
-	  verbose ( -v ): Print out processing information.
-	  show-passed ( -p ): Show list of files that passed JSLINT in output.
-	  show-ignored ( -i ): Show list of files ignored during rendering.
-	  show-missing ( -m ): Show expected files that were missing during rendering.
-	  show-warnings ( -w ): Prints out warning messages during processing.
-	  Nodelint-cli: Forcing auto-cli from Nodelint module.
-	  Nodelint-pre-commit: For use in pre-commit hooks, can lint projects before allowing devs to commit.
-	}
-
-
-jslint
+_jslint
 ------
 
-JSLINT specific options that just get passed to the JSLINT parser.
+The "_jslint" option is an object of JSLINT specific options that just get passed to the JSLINT parser.
 
 
 
-shortcuts
+_shortcuts
 ----------
 
-Object containing shortcut references for Nodelint options. Each shortcut must use the following format
+The "_shortcuts" options is an object containing shortcut references for Nodelint options. Each shortcut must use the following format
 
 	"character": {
 		"long": longhand reference

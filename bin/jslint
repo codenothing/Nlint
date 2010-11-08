@@ -1,4 +1,4 @@
-#! /usr/bin/env node
+#!/usr/local/bin/node
 /* vim:set ft=javascript : */
 /*
  * Nodelint [VERSION]

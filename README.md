@@ -107,7 +107,7 @@ Custom JSLINT
 
 The current package comes with the latest version of JSLINT(2010-10-16). To add your own custom version,
 or to update to a newer version of JSLINT, add the following as the last line of the jslint.js file, and
-overwrite the default jslint in your Nodelint/lib/jslint/ directory.
+overwrite the default jslint in your Nodelint/lib/nodelint/ directory.
 
 	exports.JSLINT = JSLINT;
 

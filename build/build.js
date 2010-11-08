@@ -55,6 +55,14 @@ function buildfile( name, file ) {
 }
 
 
+// Converts templates into binfiles
+function convert( template, data ) {
+	return template.replace( /#\{config\}/, data || 'null' )
+		.replace( /#\{path\}/, root )
+		.replace( /#\{exec\}/, process.execPath );
+}
+
+
 // Make dist directory and build the binfiles
 mkdir( dist, function(){
 	fs.readFile( dist + '.config', 'utf8', function( e, data ) {
@@ -70,14 +78,14 @@ mkdir( dist, function(){
 			}
 
 			// No change to Nodelint
-			buildfile( 'Nodelint', template.replace( /#\{config\}/, data || 'null' ).replace( /#\{path\}/, root ) );
+			buildfile( 'Nodelint', convert( template, data ) );
 
 			// Show more information for jslint binfile
 			var config = JSON.parse( data );
 			config.verbose = true;
 			config[ 'Nodelint-cli' ] = true;
 			config[ 'show-passed' ] = true;
-			buildfile( 'jslint', template.replace( /#\{config\}/, JSON.stringify( config ) ).replace( /#\{path\}/, root ) );
+			buildfile( 'jslint', convert( template, JSON.stringify( config ) ) );
 		});
 	});
 });

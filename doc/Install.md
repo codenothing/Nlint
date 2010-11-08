@@ -36,6 +36,8 @@ a few options to output more information to the terminal.
 
 
 **Note:** npm installation does all of the above, except install the jslint manfile.
+**Note2:** npm install assumes /usr/local/bin/node as your node binary. If you installed node with a differen't prefix, you
+will need to edit the Nodelint and jslint bin files.
 
 
 Configuration
