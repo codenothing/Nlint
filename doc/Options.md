@@ -36,6 +36,12 @@ The "_jslint" option is an object of JSLINT specific options that just get passe
 
 
 
+_paths
+------
+
+The "_paths" option is an object defining a list of options that have path values to be normalized
+
+
 _shortcuts
 ----------
 

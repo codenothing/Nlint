@@ -13,7 +13,7 @@ Here's a quick example:
 Installation
 ------------
 
-Download and extract the Nodelint zip file. If you want the binfiles, then you will need to build it.
+Download and extract the Nodelint zip file. If you want the binfiles, then you will need to build and install them.
 
 	$ ./configure
 	$ make
@@ -26,7 +26,7 @@ Download and extract the Nodelint zip file. If you want the binfiles, then you w
 NPM Installation
 ----------------------
 
-Nodelint is stored on the npm registry if needed.
+Nodelint is stored on the npm registry if thats your flavour.
 
 	// Install Nodelint
 	$ npm install Nodelint
@@ -108,7 +108,7 @@ The current package comes with the latest version of JSLINT(2010-10-16). To add 
 or to update to a newer version of JSLINT, add the following as the last line of the jslint.js file, and
 overwrite the default jslint in your Nodelint/lib/nodelint/ directory.
 
-	exports.JSLINT = JSLINT;
+	module.exports = JSLINT;
 
 You can also configure into your binfiles a path to the jslint file you want to use.
 

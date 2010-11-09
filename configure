@@ -40,13 +40,20 @@ function mkdir( dir, callback ) {
 
 
 // Add configurables not in options
-Nodelint.extend( Nodelint.Options, {
+Nodelint.extend( true, Nodelint.Options, {
 	jslint: null,
 	prefix: process.installPrefix,
 	libpath: null,
 	'no-Nodelint': false,
 	'no-jslint': false,
-	'no-libfile': false
+	'no-libfile': false,
+
+	// For path normalization
+	_paths: {
+		jslint: true,
+		prefix: true,
+		libpath: true
+	}
 });
 
 
@@ -54,18 +61,6 @@ Nodelint.extend( Nodelint.Options, {
 mkdir( dist, function(){
 	// Borrow the main argument handler
 	argv = Nodelint.ARGV( Nodelint.Options, process.argv.slice( 1 ) );
-
-	// Ensure absolute paths
-	[ 'jslint', 'prefix', 'libpath' ].forEach(function( name ) {
-		var value = argv.options[ name ];
-		if ( value ) {
-			argv.options[ name ] = path.normalize(
-				rhome.exec( value ) ? value.replace( rhome, process.env.HOME + '/' ) :
-				! rabs.exec( value ) ? cwd + value :
-				value
-			);
-		}
-	});
 
 	// Stash configuration
 	fs.writeFile( dist + '.config', JSON.stringify( argv.options ), 'utf8', function( e ) {
