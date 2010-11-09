@@ -43,7 +43,7 @@ will need to edit the Nodelint and jslint bin files.
 Configuration
 -------------
 
-There are a few configuration options
+In addition to the settings in Options, the following can be used during configuration.
 
  - **jslint**: Path to a custom jslint file
 
@@ -61,3 +61,7 @@ There are a few configuration options
 Here's a sample config
 
 	./configure --jslint=/path/to/custom/jslint.js --prefix=/path/to/my/installationPrefix/ --no-libfile
+
+And if you want to force certain options(including jslint options)
+
+	./configure --verbose --adsafe=true --libpath=/my/libpath/

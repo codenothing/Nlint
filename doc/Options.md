@@ -11,6 +11,8 @@ Options.js contains the options object of default settings for Nodelint and JSLi
 
  - **-b TIME, --buffer-wait=TIME:** Define the number of milliseconds(TIME) to wait for buffer output to finish before killing the process. Useful for pre-commit hooks.
 
+ - **-c, --no-color:** Disable coloring of output.
+
  - **-v, --verbose:** Verbose mode. Outputs processing information like what directory is currently being read, or what file is currently being linted.
 
  - **-p, --show-passed:** Output list of files that passed jslint.

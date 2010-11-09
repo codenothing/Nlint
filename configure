@@ -8,6 +8,7 @@
  */
 var Nodelint = require('./lib/nodelint/Nodelint'),
 	Color = Nodelint.Color,
+	bold = Color.bold,
 	sys = require('sys'),
 	fs = require('fs'),
 	path = require('path'),
@@ -28,7 +29,7 @@ function mkdir( dir, callback ) {
 		else {
 			fs.mkdir( dir, 0755, function( e ) {
 				if ( e ) {
-					sys.error( Color.boldred( e ) );
+					sys.error( bold.red( e ) );
 					process.exit( 1 );
 				}
 
@@ -65,7 +66,7 @@ mkdir( dist, function(){
 	// Stash configuration
 	fs.writeFile( dist + '.config', JSON.stringify( argv.options ), 'utf8', function( e ) {
 		if ( e ) {
-			sys.error( Color.boldred( e ) );
+			sys.error( bold.red( e ) );
 			process.exit( 1 );
 		}
 	});

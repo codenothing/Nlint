@@ -16,7 +16,7 @@ Nodelint( root, function( e, results ) {
 	}
 	// There should be one error from the test dir
 	else if ( ! results.errors.length ) {
-		sys.error( Nodelint.Color.boldred( "Did not find test error in test/" ) );
+		sys.error( Nodelint.Color.bold.red( "Did not find test error in test/" ) );
 		process.exit( 1 );
 	}
 	// Make sure that the single error is the pre-determined one
