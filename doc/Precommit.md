@@ -8,7 +8,7 @@ Git and SVN, but there are future plans to add in mercurial, bazaar, and any oth
 GIT Pre-Commit
 --------------
 
-If you are using git, add the follwing line to your .git/hooks/pre-commit file
+If you are using git, add the following line to your .git/hooks/pre-commit file
 
 	Nodelint --Nodelint-pre-commit=git
 
@@ -61,7 +61,7 @@ Recommendation
 --------------
 
 Download the Nodelint src, and add it as a tool to your project(you can just add the lib/nodelint/ directory, as it has everything you need).
-Both svn and git set the current working directory to your repo root, so if you put Nodelint in a path like 
+Both svn and git set the current working directory to your repository root, so if you put Nodelint in a path like 
 "myproject/tools/Nodelint", and then add the following to your pre-commit file.
 
 	node tools/Nodelint/index.js --Nodelint-pre-commit=git

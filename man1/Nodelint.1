@@ -1,26 +1,34 @@
-.\" Generated with Ronnjs/v0.1
-.\" http://github.com/kapouer/ronnjs/
+.\" Nodelint [VERSION]
+.\" [DATE]
+.\" A fork of tav's nodelint (http://github.com/tav/nodelint)
+.\" Corey Hart @ http://www.codenothing.com
 .
-.TH "NODELINT" "1" "[DATE]" "" ""
+.TH "NODELINT" "1" "[DATE]"
 .
 .SH "NAME"
-\fBNodelint\fR \-\- JSLint with Node\. Nodelint is a tool that runs designated files through the JSLint parser to check for
-syntax errors\. It can be used on the command line, as a pre\-commit hook, or incorporated
-into your build process\.
+Nodelint, jslint \- JSLint with Node\.
 .
-.SH "Usage"
-Nodelint [options] file\.js [file2\.js dir dir2]
+.SH "SYNOPSIS"
+\fBNodelint\fR [options] file\.js [file2\.js dir dir2]
+.br
+\fBjslint\fR [options] file\.js [file2\.js dir dir2]
+.
+.SH "DESCRIPTION"
+\fBNodelint\fR is a tool that runs designated files through the JSLint parser to check for syntax errors\.
+It can be used on the command line, as a pre\-commit hook, or incorporated into your build process\.
+.PP
+In addition, a secondary binfile \fBjslint\fR is available\. \fBjslint\fR is the same as \fBNodelint \-\-Nodelint\-cli \-vp\fR\.
 .
 .SH "Options"
 .
-.SS "\-l \fIFILE\fR, \fB\-\-logfile\fR=\fIFILE\fR"
+.SS "\-l \fIFILE\fB, \-\-logfile=\fIFILE\fR"
 Define a logfile to output results to\.
 .
-.SS "\-j \fIFILE\fR, \fB\-\-jslint\fR=\fIFILE\fR"
+.SS "\-j \fIFILE\fB, \-\-jslint=\fIFILE\fR"
 Define a custom jslint file to use\.
 .
-.SS "\-b \fITIME\fR, \fB\-\-buffer\-wait\fR=\fITIME\fR"
-Define the number of milliseconds(TIME) to wait for buffer output to finish before killing the process\. Usefull for pre\-commit hooks
+.SS "\-b \fITIME\fB, \-\-buffer\-wait=\fITIME\fR"
+Define the number of milliseconds(TIME) to wait for buffer output to finish before killing the process\. Useful for pre\-commit hooks
 .
 .SS "\-v, \-\-verbose"
 Verbose mode\. Outputs processing information like what directory is currently being read, or what file is currently being linted\.
@@ -41,7 +49,7 @@ Output warning messages during processing\.
 Trigger Cli run of arguments\.
 .
 .SS "\-\-Nodelint\-pre\-commit=\fIVCS\fR"
-Run the pre\-commit hook on files to be commited for the version control system defined\. Blocks commit on error\.
+Run the pre\-commit hook on files to be committed for the version control system defined\. Blocks commit on error\.
 .
 .SS "\-\-Nodelint\-pre\-commit\-all"
 Run Nodelint across the entire project before, and block commit on error\.

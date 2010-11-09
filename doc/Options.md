@@ -9,7 +9,7 @@ Options.js contains the options object of default settings for Nodelint and JSLi
 
  - **-j FILE, --jslint=FILE:** Define a custom jslint file to use.
 
- - **-b TIME, --buffer-wait=TIME:** Define the number of milliseconds(TIME) to wait for buffer output to finish before killing the process. Usefull for pre-commit hooks.
+ - **-b TIME, --buffer-wait=TIME:** Define the number of milliseconds(TIME) to wait for buffer output to finish before killing the process. Useful for pre-commit hooks.
 
  - **-v, --verbose:** Verbose mode. Outputs processing information like what directory is currently being read, or what file is currently being linted.
 
@@ -23,7 +23,7 @@ Options.js contains the options object of default settings for Nodelint and JSLi
 
  - **--Nodelint-cli:** Trigger Cli run of arguments.
 
- - **--Nodelint-pre-commit:VCS** Run the pre-commit hook on files to be commited for the version control system defined. Blocks commit on error.
+ - **--Nodelint-pre-commit:VCS** Run the pre-commit hook on files to be committed for the version control system defined. Blocks commit on error.
 
  - **--Nodelint-pre-commit-all:** Run Nodelint across the entire project before, and block commit on error.
 

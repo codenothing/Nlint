@@ -13,7 +13,7 @@ Tracking is the main constructor. It takes three arguments.
 
 - **options:** (Optional) Options object
 
-- **callback:** Function called once tracking has completed or errord out.
+- **callback:** Function called once tracking has completed or error'd out.
 
 The callback function gets passed two arguments, an error that might bubble up, and an object containing all the markers with their respective results
 

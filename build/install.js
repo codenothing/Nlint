@@ -66,7 +66,7 @@ function manfiles( file ) {
 	}
 
 	// Shortcut paths
-	var from = root + 'man1/' + file + '.1',
+	var from = root + 'man1/Nodelint.1',
 		to = prefix + 'share/man/man1/' + file + '.1';
 
 	exec( 'cp ' + from + ' ' + to, function( e ) {

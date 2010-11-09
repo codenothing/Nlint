@@ -32,11 +32,11 @@ and a libfile in your requires path: Nodelint.js.
  - Nodelint is the main binfile, which can be used in pre-commit hooks, while jslint is a shortcut which auto-enables
 a few options to output more information to the terminal.  
   
- - The Nodelint.js libfile is added to either the libpath defined, or the first availiable path found in your require path.
+ - The Nodelint.js libfile is added to either the libpath defined, or the first available path found in your require path.
 
 
 **Note:** npm installation does all of the above, except install the jslint manfile.
-**Note2:** npm install assumes /usr/local/bin/node as your node binary. If you installed node with a differen't prefix, you
+**Note2:** npm install assumes /usr/local/bin/node as your node binary. If you installed node with a different prefix, you
 will need to edit the Nodelint and jslint bin files.
 
 
@@ -49,7 +49,7 @@ There are a few configuration options
 
  - **prefix**: Path to installation prefix, defaults to install path of node
 
- - **libpath**: Path to installation libfile, defaults to first availiable path in the require path
+ - **libpath**: Path to installation libfile, defaults to first available path in the require path
 
  - **no-Nodelint**: Block installation of Nodelint binfile
 
