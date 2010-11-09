@@ -3,9 +3,8 @@ This implementation is a fork of [tav]'s original [nodelint.js]
 Nodelint
 ========
 
-Nodelint combines the power of [Node] and [JSLint] to parse through files or projects and find syntax errors. It can be
-used within your pre-commit hooks to force scripts into complying with standards set, and is just a general helper to clean out
-javascript bugs. Here's a quick example:
+Nodelint combines the power of [Node] and [JSLint] to parse through files or projects and find syntax errors.
+Here's a quick example:
 
 ![Nodelint Example](http://www.cnstatic.com/images/github/Nodelint/example.png "Nodelint Example")
 
