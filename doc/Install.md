@@ -35,7 +35,7 @@ a few options to output more information to the terminal.
  - The Nodelint.js libfile is added to either the libpath defined, or the first available path found in your require path.
 
 
-**Note:** npm installation does all of the above, except install the jslint manfile.
+**Note:** npm installation does all of the above, except install the jslint manfile.  
 **Note2:** npm installation assumes /usr/local/bin/node as your node binary. If you installed node with a different prefix, you
 will need to edit the Nodelint and jslint bin files.
 
