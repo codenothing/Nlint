@@ -1,9 +1,9 @@
 Options.js
 ==========
 
-Options.js contains the options object of default settings for Nodelint and JSLint.  
-  
-  
+Options.js contains the options object of default settings for Nodelint and JSLint.
+
+
 
  - **-l FILE, --logfile=FILE:** Define a logfile to output results to.
 
@@ -14,6 +14,8 @@ Options.js contains the options object of default settings for Nodelint and JSLi
  - **-c, --no-color:** Disable coloring of output.
 
  - **-v, --verbose:** Verbose mode. Outputs processing information like what directory is currently being read, or what file is currently being linted.
+
+ - **-e, exit-with-non-zero:** Exit with non-zero status code if at least one of the jslint test fails. This is useful when running Nodelint through command line and integrating it with different build tools.
 
  - **-p, --show-passed:** Output list of files that passed jslint.
 
