@@ -26,7 +26,7 @@ Download and extract the Nodelint zip file. If you want the binfiles, then you w
 NPM Installation
 ----------------------
 
-Nodelint is stored on the npm registry if thats your flavour.
+Nodelint is stored on the npm registry if thats your flavor.
 
 	// Install Nodelint
 	$ npm install Nodelint
