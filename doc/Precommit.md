@@ -20,7 +20,12 @@ are found. If you want to lint your entire project on every commit, add the foll
 Just remember to set your .lintignore script(s) to block linting of files you know will fail.  
   
 If you have yet to create a pre-commit hook, just move the pre-commit.sample file to pre-commit, and remove
-everything but the first line with the shebang telling what env to use. Make sure it is executable.
+everything but the first line with the shebang telling what env to use. Make sure it is executable. Here's a
+quick sample:
+
+
+![Nodelint Git Pre Commit Example](http://www.cnstatic.com/images/github/Nodelint/git.png "Nodelint Git Pre Commit Example")
+
 
 
 SVN Pre-Commit
@@ -38,7 +43,10 @@ are found. If you want to lint your entire project on every commit, add the foll
 Just remember to set your .lintignore script(s) to block linting of files you know will fail.  
   
 If you have yet to create a pre-commit hook, just move the pre-commit.tmpl file to pre-commit, and remove
-everything but the first line with the shebang telling what env to use. Make sure it is executable.  
+everything but the first line with the shebang telling what env to use. Make sure it is executable. Here's a quick
+sample:
+
+![Nodelint SVN Pre Commit Example](http://www.cnstatic.com/images/github/Nodelint/svn.png "Nodelint SVN Pre Commit Example")
   
 
 **Note:** If you built node with a differen't install path then the default /usr/local/, then you will have to

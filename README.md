@@ -68,6 +68,10 @@ before Nodelint exits
 
 	Nodelint --Nodelint-pre-commit=git --buffer-wait=1500 .
 
+Here's a quick sample
+
+![Nodelint Git Pre Commit Example](http://www.cnstatic.com/images/github/Nodelint/git.png "Nodelint Git Pre Commit Example")
+
 
 
 Nodelint Usage
