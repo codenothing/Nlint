@@ -44,6 +44,17 @@ _paths
 The "_paths" option is an object defining a list of options that have path values to be normalized
 
 
+_special
+--------
+
+The "_special" options is an object of options with special argument value handling.
+An example would be the buffer-wait handler that forces integer values:
+
+	'buffer-wait': function( value ) {
+		return parseInt( value || 0, 10 );
+	}
+
+
 _shortcuts
 ----------
 
