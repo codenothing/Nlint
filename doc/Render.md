@@ -22,7 +22,7 @@ up during rendering, and the second is current instance of the Render Object.
 	{
 	  passes: Array of files that passed JSLINT
 	  errors: Array of objects containing the filename that failed JSLINT, and the errors found
-	  missing: Array of files that were expected to find, but were actually missing
+	  missing: Array of files that were expected, but were actually missing
 	  count: Object with two properties, files which is the count of files parsed, and errors which is the count of errors found
 	  options: Options object used
 	  ignore: Array of paths to ignore

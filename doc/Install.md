@@ -1,7 +1,7 @@
 Installation
 ------------
 
-Download and extract the Nodelint zip file. If you want the binfiles, then you will need to build it.
+Download and extract the Nodelint zip file. If you want the binfiles, then you will need to make them.
 
 	$ ./configure
 	$ make
@@ -14,7 +14,7 @@ Download and extract the Nodelint zip file. If you want the binfiles, then you w
 NPM Installation
 ----------------------
 
-Nodelint is stored on the npm registry if needed.
+Nodelint is stored on the npm registry if that's your flavor.
 
 	// Install Nodelint
 	$ npm install Nodelint
@@ -36,7 +36,7 @@ a few options to output more information to the terminal.
 
 
 **Note:** npm installation does all of the above, except install the jslint manfile.
-**Note2:** npm install assumes /usr/local/bin/node as your node binary. If you installed node with a different prefix, you
+**Note2:** npm installation assumes /usr/local/bin/node as your node binary. If you installed node with a different prefix, you
 will need to edit the Nodelint and jslint bin files.
 
 

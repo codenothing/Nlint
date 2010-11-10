@@ -49,7 +49,7 @@ sample:
 ![Nodelint SVN Pre Commit Example](http://www.cnstatic.com/images/github/Nodelint/svn.png "Nodelint SVN Pre Commit Example")
   
 
-**Note:** If you built node with a differen't install path then the default /usr/local/, then you will have to
+**Note:** If you built node with a different install path then the default /usr/local/, then you will have to
 use the full path to Nodelint binfile to use it in svn pre-commit hooks.
 
 

@@ -25,7 +25,7 @@ Options.js contains the options object of default settings for Nodelint and JSLi
 
  - **--Nodelint-cli:** Trigger Cli run of arguments.
 
- - **--Nodelint-pre-commit:VCS** Run the pre-commit hook on files to be committed for the version control system defined. Blocks commit on error.
+ - **--Nodelint-pre-commit=VCS:** Run the pre-commit hook on files to be committed for the version control system defined. Blocks commit on error.
 
  - **--Nodelint-pre-commit-all:** Run Nodelint across the entire project before, and block commit on error.
 
@@ -47,7 +47,7 @@ The "_paths" option is an object defining a list of options that have path value
 _special
 --------
 
-The "_special" options is an object of options with special argument value handling.
+The "_special" option is an object of options with special argument value handling.
 An example would be the buffer-wait handler that forces integer values:
 
 	'buffer-wait': function( value ) {
