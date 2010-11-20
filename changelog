@@ -12,3 +12,4 @@
 
 # Removals
 -buffer-wait option removed in favor of Nodelint.leave hack
+-No longer on NPM, packaging conflict
