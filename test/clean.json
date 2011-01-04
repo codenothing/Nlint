@@ -1,0 +1,16 @@
+{
+	"Test": "cool",
+	"bool": true,
+	"fbool": false,
+	"nested": {
+		"numer": 10,
+		"decimal": 10.01
+	},
+	"array": [
+		true,
+		false,
+		10,
+		10.01,
+		"win"
+	]
+}

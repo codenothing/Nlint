@@ -3,6 +3,7 @@
 
 # JSLint script forces extreme lint hatred by chaning default settings
 lib/nodelint/jslint.js
+lib/nodelint/jsonlint.js
 
 # Ignore all non nodelint packages
 lib/vim/
