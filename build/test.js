@@ -27,15 +27,16 @@ Nodelint( root, function( e, results ) {
 		sys.error( e.message || e );
 		process.exit( 1 );
 	}
-	// There should be one error from the test dir
+	// There should be two error from the test dir
 	else if ( ! results.errors.length ) {
 		sys.error( Nodelint.Color.bold.red( "Did not find test error in test/error.js" ) );
 		process.exit( 1 );
 	}
-	// Make sure that the single error is the pre-determined one
-	else if ( results.errors.length === 1 && /\/test\/error.js$/.exec( results.errors[ 0 ].file ) ) {
+	// Make sure that there are only two errors
+	else if ( results.errors.length === 2 ) {
 		Nodelint.leave( 0, results.output );
 	}
+	// More than two, clean them
 	else {
 		Nodelint.leave( 1, results.output );
 	}

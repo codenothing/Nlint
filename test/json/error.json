@@ -1,0 +1,7 @@
+/**
+ * Dummy json file to trigger an error for testing
+ */
+{
+	"test": true,
+	"ing": {[]} // Expecting this error
+}

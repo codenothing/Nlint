@@ -15,13 +15,13 @@ Nodelint( root, { encodings: [ 'UTF-8-BOM' ] }, function( e, results ) {
 		sys.error( e.message || e );
 		process.exit( 1 );
 	}
-	// There should be one error from the test dir
+	// There should be two errors from the test dir
 	else if ( ! results.errors.length ) {
-		sys.error( Nodelint.Color.bold.red( "Did not find test error in test/error.js" ) );
+		sys.error( Nodelint.Color.bold.red( "Did not find test errors in linters" ) );
 		process.exit( 1 );
 	}
-	// Make sure that the single error is the pre-determined one
-	else if ( results.errors.length === 1 && /\/test\/error.js$/.exec( results.errors[ 0 ].file ) ) {
+	// Make sure that there are only two errors
+	else if ( results.errors.length === 2 ) {
 		process.exit( 0 );
 	}
 	else {
