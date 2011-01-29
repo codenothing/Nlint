@@ -1,9 +1,8 @@
 # Nothing good can come from the git repo
 .git/
 
-# JSLint script forces extreme lint hatred by chaning default settings
-lib/nodelint/jslint.js
-lib/nodelint/jsonlint.js
+# Lets ignore the linters as they are third-party
+lib/linters/*
 
 # Ignore all non nodelint packages
 lib/vim/
