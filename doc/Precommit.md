@@ -56,7 +56,7 @@ use the full path to Nodelint binfile to use it in svn pre-commit hooks.
 Recommendation
 --------------
 
-Download the Nodelint src, and add it as a tool to your project(you can just add the lib/nodelint/ directory, as it has everything you need).
+Download the Nodelint src, and add it as a tool to your project(you can just add the src/ directory, as it has everything you need).
 Both svn and git set the current working directory to your repository root, so if you put Nodelint in a path like 
 "myproject/tools/Nodelint", and then add the following to your pre-commit file.
 

@@ -6,7 +6,7 @@
  */
 var Nodelint = global.Nodelint,
 	fs = require('fs'),
-	path = __dirname + '/../linters/';
+	path = __dirname + '/linters/';
 
 
 function Linters( file, content, options ) {

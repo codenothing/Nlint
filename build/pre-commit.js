@@ -4,7 +4,7 @@
  * A fork of tav's nodelint (http://github.com/tav/nodelint)
  * Corey Hart @ http://www.codenothing.com
  */
-var Nodelint = require('../lib/nodelint/Nodelint'),
+var Nodelint = require('../src/Nodelint'),
 	sys = require('sys'),
 	root = __dirname.replace( /build\/?/, '/' );
 

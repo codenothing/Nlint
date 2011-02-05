@@ -2,16 +2,15 @@
 .git/
 
 # Lets ignore the linters as they are third-party
-lib/linters/*
+src/linters/*
 
 # Ignore all non nodelint packages
-lib/vim/
-lib/hooks/
-
-# For testing purposes
-test/ignore*
-test/*ignore*
+tools/
 
 # Needs leading zero
 build/build.js
 build/install.js
+
+# For testing purposes
+test/ignore*
+test/*ignore*
