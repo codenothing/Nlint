@@ -14,6 +14,7 @@ Nodelint.extend( Nodelint.Options, {
 	logfile: root + 'lint.out',
 	verbose: true,
 	encodings: [ 'UTF-8-BOM' ],
+	jslint: __dirname + '/../tools/custom.jslint.js',
 	'show-missing': true,
 	'show-ignored': true,
 	'show-passed': true,

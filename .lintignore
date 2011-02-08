@@ -7,10 +7,6 @@ src/linters/*
 # Ignore all non nodelint packages
 tools/
 
-# Needs leading zero
-build/build.js
-build/install.js
-
 # For testing purposes
 test/ignore*
 test/*ignore*

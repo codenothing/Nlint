@@ -6,7 +6,4 @@
  */
 
 // This file needs to contain an error to show the output is working
-var obj = {};
-for ( var i in obj ) { // Expecting this error
-	obj[ i ] = true;
-}
+var obj = {} // Expecting this error
