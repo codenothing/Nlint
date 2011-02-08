@@ -13,7 +13,11 @@ function Linters( file, content, options ) {
 	var i, linters = Linters.linters;
 
 	for ( i in linters ) {
-		if ( linters[ i ].hasOwnProperty( 'match' ) &&  linters[ i ].match.exec( file ) ) {
+		// Limit linters to defined list in options
+		if ( options.use && options.use.indexOf( i ) === -1 ) {
+			continue;
+		}
+		else if ( linters[ i ].hasOwnProperty( 'match' ) &&  linters[ i ].match.exec( file ) ) {
 			return linters[ i ].call( this, file, content, options );
 		}
 	}
@@ -26,11 +30,15 @@ Nodelint.extend( Linters, {
 
 	linters: {},
 
-	check: function( file ) {
+	check: function( file, options ) {
 		var i, linters = Linters.linters;
 
 		for ( i in linters ) {
-			if ( linters[ i ].hasOwnProperty( 'match' ) &&  linters[ i ].match.exec( file ) ) {
+			// Limit linters to defined list in options
+			if ( options.use && options.use.indexOf( i ) === -1 ) {
+				continue;
+			}
+			else if ( linters[ i ].hasOwnProperty( 'match' ) &&  linters[ i ].match.exec( file ) ) {
 				return true;
 			}
 		}

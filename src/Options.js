@@ -15,6 +15,9 @@ global.Nodelint.Options = {
 	// Special encodings to check for
 	'encodings': null,
 
+	// Only use a set of linters
+	'use': null,
+
 	// Prevent color wrapping of output
 	'no-color': false,
 
@@ -32,6 +35,7 @@ global.Nodelint.Options = {
 
 	// Display warnings during processing to the terminal
 	'show-warnings': false,
+
 
 	// Forcing CLI from Nodelint init
 	'Nodelint-cli': false,
@@ -51,6 +55,11 @@ global.Nodelint.Options = {
 
 		// Encodings is a comma separated list of values
 		'encodings': function( value, options ) {
+			return ( value || '' ).split(',');
+		},
+
+		// Focused linters are a comma separated list of values
+		'use': function( value, options ) {
 			return ( value || '' ).split(',');
 		}
 
@@ -76,6 +85,13 @@ global.Nodelint.Options = {
 		// Shortcut for encodings list
 		'e': {
 			'long': 'encodings',
+			'expect': true,
+			'default': null
+		},
+
+		// Shortcut for encodings list
+		'u': {
+			'long': 'use',
 			'expect': true,
 			'default': null
 		},

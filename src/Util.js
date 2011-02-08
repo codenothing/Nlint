@@ -46,9 +46,15 @@ var sys = require('sys'), Nodelint = global.Nodelint, Util = {
 			copy = args[ i ];
 			for ( name in copy ) {
 				if ( copy.hasOwnProperty( name ) ) {
-					target[ name ] = deep && typeof copy[ name ] == 'object' && copy[ name ] !== null ? 
-						Util.extend( deep, target[ name ] || {}, copy[ name ] ) :
-						copy[ name ];
+					if ( deep && copy[ name ] && Array.isArray( copy[ name ] ) ) {
+						target[ name ] = Util.extend( deep, target[ name ] || [], copy[ name ] );
+					}
+					else if ( deep && typeof copy[ name ] == 'object' && copy[ name ] !== null ) {
+						target[ name ] = Util.extend( deep, target[ name ] || {}, copy[ name ] );
+					}
+					else {
+						target[ name ] = copy[ name ];
+					}
 				}
 			}
 		}

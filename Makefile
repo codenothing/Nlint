@@ -13,5 +13,11 @@ all:
 install:
 	@node build/install.js
 
-test:
+test: test-use-jslint test-use-jsonlint
 	@node build/test.js
+
+test-use-jslint:
+	@node build/test-use.js jslint
+
+test-use-jsonlint:
+	@node build/test-use.js jsonlint

@@ -25,14 +25,14 @@ global.Nodelint = Nodelint = function( Files, Options, Callback ) {
 		}
 
 		// Get formatted result
-		var format = Nodelint.Format( render, Options );
+		var options = render.options, format = Nodelint.Format( render, options );
 
 		// Write to log files for attachment purposes
-		if ( Options.logfile ) {
-			fs.writeFile( Options.logfile, format.logfile, 'utf8', function( e ) {
+		if ( options.logfile ) {
+			fs.writeFile( options.logfile, format.logfile, 'utf8', function( e ) {
 				var info = e ? 
 					"Unable to write to logfile - " + ( e.message || e ) :
-					"Logs have been recorded to " + Options.logfile;
+					"Logs have been recorded to " + options.logfile;
 
 				// Output logfile storage info
 				format.output += "\n\n" + Nodelint.Color.blue( info ) + "\n\n";

@@ -5,4 +5,4 @@
 dist/
 
 # Also ignore the output from testing
-lint.out
+build/out/*.out

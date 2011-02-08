@@ -300,7 +300,7 @@ Render.prototype = {
 		var self = this;
 
 		// Skip file download if there is no linter for it
-		if ( Nodelint.Linters.check( file ) === false ) {
+		if ( Nodelint.Linters.check.call( self, file, self.options ) === false ) {
 			return callback.call( self, null );
 		}
 
