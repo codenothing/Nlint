@@ -39,27 +39,30 @@ Nodelint.Format = function( results, options ) {
 	}
 
 	// Files that were ignored
-	if ( Options[ 'show-ignored' ] ) {
+	if ( ignore.length && Options[ 'show-ignored' ] ) {
 		ignore.forEach(function( file ) {
 			stdout.push( Color.yellow( "Ignored " + file ) );
-			logfile.unshift( "Ignored " + file );
+			logfile.unshift( file );
 		});
+		logfile.unshift( "\n=======================================\n\nIgnored Files\n" );
 	}
 
 	// Files not able to find
-	if ( Options[ 'show-missing' ] ) {
+	if ( missing.length && Options[ 'show-missing' ] ) {
 		missing.forEach(function( file ) {
 			stdout.push( Color.yellow( "Missing " + file ) );
-			logfile.unshift( "Missing " + file );
+			logfile.unshift( file );
 		});
+		logfile.unshift( "\n=======================================\n\nMissing Files\n" );
 	}
 
 	// Files that passed without errors
-	if ( Options[ 'show-passed' ] ) {
+	if ( passes.length && Options[ 'show-passed' ] ) {
 		passes.forEach(function( file ) {
 			stdout.push( Color.green( file + " passed with 0 errors" ) );
-			logfile.unshift( file + " passed with 0 errors");
+			logfile.unshift( file );
 		});
+		logfile.unshift( "\n=======================================\n\nFiles passed with 0 errors.\n" );
 	}
 
 	// Get some separation for stdout
@@ -69,11 +72,6 @@ Nodelint.Format = function( results, options ) {
 
 	// Files with errors
 	errors.forEach(function( row ) {
-		// Get processing separation for logfile
-		if ( logfile.length ) {
-			logfile.unshift("\n=======================================\n");
-		}
-
 		// stderr is it's own entity
 		if ( stderr.length ) {
 			stderr.push("\n=======================================\n");
@@ -97,6 +95,9 @@ Nodelint.Format = function( results, options ) {
 				( e.evidence ? e.evidence + "\n" : '' )
 			);
 		});
+
+		// Get processing separation for logfile
+		logfile.unshift("\n=======================================\n");
 	});
 
 	// Use stderr if errors were found, otherwise use stdout
@@ -109,8 +110,7 @@ Nodelint.Format = function( results, options ) {
 	// Logfile has no encoding
 	logfile.unshift(
 		'Total Files: ' + count.files,
-		'Total Errors: ' + count.errors,
-		"\n=======================================\n"
+		'Total Errors: ' + count.errors
 	);
 
 	// Finalize the outputs and return object of results
