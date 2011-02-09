@@ -35,7 +35,7 @@ Nodelint.ARGV = function( defaults, args, overwrite ) {
 		shortcuts = defaults._shortcuts,
 		copy = overwrite ? defaults : {},
 		targets = [],
-		short, opt, parts, i, l, name, value;
+		short, opt, parts, i, l, n, name, value;
 
 	// Assume binfile alias when not using node initializer
 	if ( ! useargs && rnode.exec( ARGV.shift() ) ) {
@@ -112,11 +112,27 @@ Nodelint.ARGV = function( defaults, args, overwrite ) {
 		}
 	}
 
+	// Comma separated list of values
+	if ( defaults._csl ) {
+		for ( i in defaults._csl ) {
+			if ( defaults._csl[ i ] === true && typeof copy[ i ] == 'string' ) {
+				copy[ i ] = copy[ i ].split(',');
+			}
+		}
+	}
+
 	// Normalize paths
 	if ( defaults._paths ) {
 		for ( i in defaults._paths ) {
 			if ( defaults._paths[ i ] === true && copy[ i ] ) {
-				copy[ i ] = Nodelint.normalize( copy[ i ] );
+				if ( Array.isArray( copy[ i ] ) ) {
+					for ( n = -1, l = copy[ i ].length; ++n < l; ) {
+						copy[ i ][ n ] = Nodelint.normalize( copy[ i ][ n ] );
+					}
+				}
+				else {
+					copy[ i ] = Nodelint.normalize( copy[ i ].trim() );
+				}
 			}
 		}
 	}

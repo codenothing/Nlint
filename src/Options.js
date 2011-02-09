@@ -47,37 +47,22 @@ global.Nodelint.Options = {
 	'Nodelint-pre-commit': false,
 	'Nodelint-pre-commit-all': false,
 
+	
+	// Comma separated list of values
+	_csl: {
+		'encodings': true,
+		'use': true,
+		'add': true
+	},
 
 	// Options that are expecting to be paths
 	_paths: {
-		'logfile': true
+		'logfile': true,
+		'add': true
 	},
 
 	// Special argument handling
-	_special: {
-
-		// Encodings is a comma separated list of values
-		'encodings': function( value, options ) {
-			return ( value || '' ).split(',');
-		},
-
-		// Focused linters are a comma separated list of values
-		'use': function( value, options ) {
-			return ( value || '' ).split(',');
-		},
-
-		// Added linters is a comma separated list of paths to modules
-		'add': function( value, options ) {
-			var parts = [];
-
-			( value || '' ).split(',').forEach(function( path ) {
-				parts.push( Nodelint.normalize( path.trim() ) );
-			});
-
-			return path;
-		}
-
-	},
+	_special: {},
 
 	// Shortcuts for nodelint settings
 	_shortcuts: {
