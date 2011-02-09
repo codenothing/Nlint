@@ -71,7 +71,7 @@ mkdir( dist, function(){
 			process.exit( 1 );
 		}
 
-		fs.readFile( __dirname + '/template', 'utf8', function( e, template ) {
+		fs.readFile( __dirname + '/_template', 'utf8', function( e, template ) {
 			if ( e ) {
 				error( e );
 				process.exit( 1 );

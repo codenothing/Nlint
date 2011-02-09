@@ -4,7 +4,14 @@
  * A fork of tav's nodelint (http://github.com/tav/nodelint)
  * Corey Hart @ http://www.codenothing.com
  */
-var sys = require('sys'), Nodelint = global.Nodelint, Util = {
+var Nodelint = global.Nodelint,
+	sys = require('sys'),
+	Path = require('path'),
+	rhome = /^\~\//,
+	rroot = /^\//;
+
+
+var Util = {
 
 	// Meta
 	version: "[VERSION]",
@@ -24,6 +31,18 @@ var sys = require('sys'), Nodelint = global.Nodelint, Util = {
 	error: function( e ) {
 		sys.error( Nodelint.Color.bold.red( e.message || e ) );
 		process.exit( 1 );
+	},
+
+	// Internal path normalizer, handles home and relative directories
+	normalize: function( path ) {
+		if ( rhome.exec( path ) ) {
+			path = path.replace( rhome, process.env.HOME + '/' );
+		}
+		else if ( ! rroot.exec( path ) ) {
+			path = process.cwd() + '/' + path;
+		}
+
+		path = Path.normalize( path );
 	},
 
 	// Object extensions

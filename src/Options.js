@@ -18,6 +18,9 @@ global.Nodelint.Options = {
 	// Only use a set of linters
 	'use': null,
 
+	// More lint modules
+	'add': null,
+
 	// Prevent color wrapping of output
 	'no-color': false,
 
@@ -61,6 +64,17 @@ global.Nodelint.Options = {
 		// Focused linters are a comma separated list of values
 		'use': function( value, options ) {
 			return ( value || '' ).split(',');
+		},
+
+		// Added linters is a comma separated list of paths to modules
+		'add': function( value, options ) {
+			var parts = [];
+
+			( value || '' ).split(',').forEach(function( path ) {
+				parts.push( Nodelint.normalize( path.trim() ) );
+			});
+
+			return path;
 		}
 
 	},
@@ -92,6 +106,13 @@ global.Nodelint.Options = {
 		// Shortcut for encodings list
 		'u': {
 			'long': 'use',
+			'expect': true,
+			'default': null
+		},
+
+		// Adding more linter modules
+		'a': {
+			'long': 'add',
 			'expect': true,
 			'default': null
 		},

@@ -54,7 +54,7 @@ function Render( files, options, callback ) {
 		options = {};
 	}
 
-	var self = this, track;
+	var self = this, track, _Nodelint = global.Nodelint;
 	self.options = Nodelint.extend( true, {}, Nodelint.Options, options || {} );
 	self.ignore = [];
 	self._rignore = [];
@@ -73,6 +73,15 @@ function Render( files, options, callback ) {
 	}
 	else if ( ! Array.isArray( files ) ) {
 		files = [ files ];
+	}
+
+	// Add a linter to the page
+	if ( self.options.add && self.options.add.length ) {
+		global.Nodelint = Nodelint;
+		self.options.add.forEach(function( linter ) {
+			require( linter );
+		});
+		global.Nodelint = _Nodelint;
 	}
 
 	// Main Render tracker

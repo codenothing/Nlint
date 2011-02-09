@@ -8,9 +8,7 @@ var Nodelint = global.Nodelint,
 	path = require('path'),
 	rdouble = /^--/,
 	rsingle = /^-/,
-	rnode = /node$/,
-	rhome = /^\~\//,
-	rroot = /^\//;
+	rnode = /node$/;
 
 
 // Type conversion
@@ -36,7 +34,6 @@ Nodelint.ARGV = function( defaults, args, overwrite ) {
 		ARGV = useargs ? args.slice( 0 ) : process.argv.slice( 0 ),
 		shortcuts = defaults._shortcuts,
 		copy = overwrite ? defaults : {},
-		cwd = process.cwd() + '/',
 		targets = [],
 		short, opt, parts, i, l, name, value;
 
@@ -119,14 +116,7 @@ Nodelint.ARGV = function( defaults, args, overwrite ) {
 	if ( defaults._paths ) {
 		for ( i in defaults._paths ) {
 			if ( defaults._paths[ i ] === true && copy[ i ] ) {
-				if ( rhome.exec( copy[ i ] ) ) {
-					copy[ i ] = copy[ i ].replace( rhome, process.env.HOME + '/' );
-				}
-				else if ( ! rroot.exec( copy[ i ] ) ) {
-					copy[ i ] = cwd + copy[ i ];
-				}
-
-				copy[ i ] = path.normalize( copy[ i ] );
+				copy[ i ] = Nodelint.normalize( copy[ i ] );
 			}
 		}
 	}
