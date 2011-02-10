@@ -308,11 +308,6 @@ Render.prototype = {
 	file: function( file, stat, callback ) {
 		var self = this;
 
-		// Skip file download if there is no linter for it
-		if ( Nodelint.Linters.check.call( self, file, self.options ) === false ) {
-			return callback.call( self, null );
-		}
-
 		self.normalize( file, function( e, file ) {
 			if ( e ) {
 				return callback.call( self, e );
@@ -360,11 +355,11 @@ Render.prototype = {
 				error = Nodelint.Linters.call( self, file, data, self.options );
 
 				// Check for error during lint process
-				if ( error === false ) {
+				if ( error === null ) {
 					Nodelint.error( 'Unable to lint ' + file );
 				}
 				// Push any errors onto the stack
-				else if ( error.length ) {
+				else if ( error && error.length ) {
 					self.count.errors += error.length;
 					self.errors.push({
 						file: file,
@@ -389,16 +384,26 @@ Render.prototype = {
 
 		// Parse over directory
 		files.forEach(function( file ) {
-			var id = track.mark(), rignore = false;
+			var id = track.mark(), rignore = false, isdir, fin = function( e ) {
+				if ( e ) {
+					track.error( e );
+				}
+				else {
+					track.mark( id, true );
+				}
+			};
+
 			self.stat( file, function( e, stat, file ) {
 				// Hope not
 				if ( e ) {
 					return track.error( e );
 				}
 
+				// Stash reference to directory structure
+				isdir = stat.isDirectory();
 
 				// Force slash on directorys
-				if ( stat.isDirectory() && file[ file.length - 1 ] != '/' ) {
+				if ( isdir && file[ file.length - 1 ] != '/' ) {
 					file += '/';
 				}
 
@@ -412,16 +417,18 @@ Render.prototype = {
 					return track.mark( id, true );
 				}
 
-
-				// Directory, render it again
-				return self[ stat.isDirectory() ? 'dir' : 'file' ]( file, stat, function( e ) {
-					if ( e ) {
-						track.error( e );
-					}
-					else {
-						track.mark( id, true );
-					}
-				});
+				// Keep walking
+				if ( isdir ) {
+					self.dir( file, stat, fin );
+				}
+				// There is no default use when walking directories
+				else if ( Nodelint.Linters.check.call( self, file, self.options ) === false ) {
+					track.mark( id, true );
+				}
+				// We have a winner
+				else {
+					self.file( file, stat, fin );
+				}
 			});
 		});
 

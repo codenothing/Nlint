@@ -42,7 +42,7 @@ var Util = {
 			path = process.cwd() + '/' + path;
 		}
 
-		path = Path.normalize( path );
+		return Path.normalize( path );
 	},
 
 	// Object extensions

@@ -21,6 +21,9 @@ global.Nodelint.Options = {
 	// More lint modules
 	'add': null,
 
+	// Default linter to use (only for direct file pointers)
+	'default': null,
+
 	// Prevent color wrapping of output
 	'no-color': false,
 
@@ -98,6 +101,13 @@ global.Nodelint.Options = {
 		// Adding more linter modules
 		'a': {
 			'long': 'add',
+			'expect': true,
+			'default': null
+		},
+
+		// Shortcut for setting default linter
+		'd': {
+			'long': 'default',
 			'expect': true,
 			'default': null
 		},

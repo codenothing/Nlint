@@ -10,7 +10,7 @@ var Nodelint = global.Nodelint,
 
 
 function Linters( file, content, options ) {
-	var i, linters = Linters.linters;
+	var i, linters = Linters.linters, def = options['default'];
 
 	for ( i in linters ) {
 		// Limit linters to defined list in options
@@ -20,6 +20,11 @@ function Linters( file, content, options ) {
 		else if ( linters[ i ].hasOwnProperty( 'match' ) &&  linters[ i ].match.exec( file ) ) {
 			return linters[ i ].call( this, file, content, options );
 		}
+	}
+
+	// For direct file pointers
+	if ( def && linters[ def ] ) {
+		return linters[ def ].call( this, file, content, options );
 	}
 
 	return null;
