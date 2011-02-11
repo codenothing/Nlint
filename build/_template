@@ -6,7 +6,7 @@
  * A fork of tav's nodelint (http://github.com/tav/nodelint)
  * Corey Hart @ http://www.codenothing.com
  */
-var config = #{config}, options = global._NodelintOptions, i, k;
+var config = #{config}, options = global._NodelintOptions, Nodelint, i, k;
 if ( options ) {
 	for ( i in options ) {
 		if ( i == '_jslint' || i == '_shortcuts' ) {
@@ -20,5 +20,5 @@ if ( options ) {
 		}
 	}
 }
-global._NodelintOptions = config;
-module.exports = require('#{path}');
+module.exports = Nodelint = require('#{path}');
+#{cli}
