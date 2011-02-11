@@ -24,29 +24,29 @@ global.Nodelint = Nodelint = function( Files, Options, Callback ) {
 			return Callback.call( Nodelint, e || "Expecting a file or directory to lint." );
 		}
 
-		// Get formatted result
-		var options = render.options, format = Nodelint.Format( render, options );
+		// Format the result
+		render = Nodelint.Format( render );
 
 		// Write to log files for attachment purposes
-		if ( options.logfile ) {
-			fs.writeFile( options.logfile, format.logfile, 'utf8', function( e ) {
+		if ( render.options.logfile ) {
+			fs.writeFile( render.options.logfile, render.logfile, 'utf8', function( e ) {
 				var info = e ? 
 					"Unable to write to logfile - " + ( e.message || e ) :
-					"Logs have been recorded to " + options.logfile;
+					"Logs have been recorded to " + render.options.logfile;
 
 				// Output logfile storage info
-				format.output += "\n\n" + Nodelint.Color.blue( info ) + "\n\n";
+				render.output += "\n\n" + Nodelint.Color.blue( info ) + "\n\n";
 
 				// Send back to caller
-				Callback.call( Nodelint, null, format );
+				Callback.call( Nodelint, null, render );
 			});
 		}
 		else {
 			// Add spacing
-			format.output += "\n\n";
+			render.output += "\n\n";
 
 			// Send back to caller
-			Callback.call( Nodelint, null, format );
+			Callback.call( Nodelint, null, render );
 		}
 	});
 };
