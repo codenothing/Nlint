@@ -4,7 +4,9 @@
  * A fork of tav's nodelint (http://github.com/tav/nodelint)
  * Corey Hart @ http://www.codenothing.com
  */
-var sys = require('sys'),
+var Nodelint = require('../src/Nodelint'),
+	Color = Nodelint.Color,
+	sys = require('sys'),
 	fs = require('fs'),
 	path = require('path'),
 	exec = require('child_process').exec,
@@ -15,7 +17,7 @@ var sys = require('sys'),
 
 // Default error handling
 function error( e ) {
-	sys.error( "\x1B[1;31m" + ( e.message || e ) + "\x1B[0m" );
+	sys.error( Color.bold.red( e.message || e ) );
 }
 
 
@@ -60,11 +62,6 @@ function install( file ) {
 
 
 function manfiles( file ) {
-	// Ensure dev wants the binfile
-	if ( config[ 'no-' + file ] ) {
-		return;
-	}
-
 	// Shortcut paths
 	var from = root + 'man1/Nodelint.1',
 		to = prefix + 'share/man/man1/' + file + '.1';
@@ -137,23 +134,6 @@ fs.readFile( dist + '.config', 'utf8', function( e, data ) {
 		});
 	});
 
-	// Libfile installation
-	if ( ! config[ 'no-libfile' ] ) {
-		if ( ! config.libpath ) {
-			libfile( 0 );
-		}
-		else {
-			if ( config.libpath[ config.libpath.length - 1 ] != '/' ) {
-				config.libpath += '/';
-			}
-
-			exec( 'cp ' + dist + 'Nodelint ' + config.libpath + 'Nodelint.js', function( e ) {
-				if ( e ) {
-					error( e );
-				}
-
-				sys.puts( 'Installed ' + config.libpath + 'Nodelint.js' );
-			});
-		}
-	}
+	// Auto install the lib file
+	libfile( 0 );
 });
