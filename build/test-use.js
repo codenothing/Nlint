@@ -17,6 +17,7 @@ Nodelint.extend( Nodelint.Options, {
 	encodings: [ 'UTF-8-BOM' ],
 	use: [ use ],
 	jslint: __dirname + '/../tools/custom.jslint.js',
+	'default': use,
 	'show-missing': true,
 	'show-ignored': true,
 	'show-passed': true,

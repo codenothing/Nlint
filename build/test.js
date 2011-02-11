@@ -7,22 +7,21 @@
 var Nodelint = require('../src/Nodelint'),
 	Color = Nodelint.Color,
 	sys = require('sys'),
-	root = __dirname.replace( /build\/?/, '' );
-
-// Configure test case
-Nodelint.extend( Nodelint.Options, {
-	logfile: root + 'build/out/lint.out',
-	verbose: true,
-	encodings: [ 'UTF-8-BOM' ],
-	jslint: __dirname + '/../tools/custom.jslint.js',
-	'show-missing': true,
-	'show-ignored': true,
-	'show-passed': true,
-	'show-warnings': true
-});
+	root = __dirname.replace( /build\/?/, '' ),
+	options = {
+		logfile: root + 'build/out/lint.out',
+		verbose: true,
+		encodings: [ 'UTF-8-BOM' ],
+		jslint: __dirname + '/../tools/custom.jslint.js',
+		'default': 'jslint',
+		'show-missing': true,
+		'show-ignored': true,
+		'show-passed': true,
+		'show-warnings': true
+	};
 
 // Run nodelint and print out response
-Nodelint( root, function( e, results ) {
+Nodelint( [ root, root + 'configure' ], options, function( e, results ) {
 	// Unknown Error
 	if ( e ) {
 		sys.error( e.message || e );
