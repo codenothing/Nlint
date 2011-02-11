@@ -4,16 +4,21 @@
  * A fork of tav's nodelint (http://github.com/tav/nodelint)
  * Corey Hart @ http://www.codenothing.com
  */
-var sys = require('sys'),
+var Nodelint = require('../src/Nodelint'),
+	sys = require('sys'),
 	fs = require('fs'),
 	path = require('path'),
 	root = __dirname.replace( /\/build\/?/, '' ),
-	dist = root + '/dist/';
+	dist = root + '/dist/',
+	rconfig = /#\{config\}/,
+	rpath = /#\{path\}/,
+	rexec = /#\{exec\}/;
 
 
 // Default error handling
 function error( e ) {
-	sys.error( "\x1B[1;31m" + ( e.message || e ) + "\x1B[0m" );
+	sys.error( Nodelint.Color.bold.red( e.message || e ) );
+	process.exit( 1 );
 }
 
 
@@ -57,9 +62,9 @@ function buildfile( name, file ) {
 
 // Converts templates into binfiles
 function convert( template, data ) {
-	return template.replace( /#\{config\}/, data || 'null' )
-		.replace( /#\{path\}/, root )
-		.replace( /#\{exec\}/, process.execPath );
+	return template.replace( rconfig, data || 'null' )
+		.replace( rpath, root )
+		.replace( rexec, process.execPath );
 }
 
 
@@ -80,12 +85,30 @@ mkdir( dist, function(){
 			// No change to Nodelint
 			buildfile( 'Nodelint', convert( template, data ) );
 
-			// Show more information for jslint binfile
-			var config = JSON.parse( data );
+			// Show more information for focues lint binfiles
+			var config = JSON.parse( data ), use;
 			config.verbose = true;
 			config[ 'Nodelint-cli' ] = true;
 			config[ 'show-passed' ] = true;
-			buildfile( 'jslint', convert( template, JSON.stringify( config ) ) );
+
+			// Add any additional linters
+			if ( config.add ) {
+				global.Nodelint = Nodelint;
+				config.add.forEach(function( path ) {
+					require( path );
+				});
+			}
+
+			// Go through each required linter
+			Nodelint.each( Nodelint.Linters.linters, function( object, name ) {
+				if ( config.only && config.only.indexOf( name ) > -1 ) {
+					return;
+				}
+
+				config.use = [ name ];
+				config['default'] = name;
+				buildfile( name, convert( template, JSON.stringify( config ) ) );
+			});
 		});
 	});
 });

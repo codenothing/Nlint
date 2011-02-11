@@ -38,6 +38,12 @@ function mkdir( dir, callback ) {
 // Add configurables not in options
 Nodelint.extend( true, Nodelint.Options, {
 	prefix: process.installPrefix,
+	only: null,
+
+	// For comma separated lists
+	_csl: {
+		only: true
+	},
 
 	// For path normalization
 	_paths: {
@@ -49,7 +55,7 @@ Nodelint.extend( true, Nodelint.Options, {
 // Store configuration
 mkdir( dist, function(){
 	// Borrow the main argument handler
-	var argv = Nodelint.ARGV( Nodelint.Options, process.argv.slice( 1 ) );
+	var argv = Nodelint.ARGV( Nodelint.Options, process.argv.slice( 2 ) );
 
 	// Stash configuration
 	fs.writeFile( dist + '.config', JSON.stringify( argv.options ), 'utf8', function( e ) {
@@ -57,5 +63,7 @@ mkdir( dist, function(){
 			sys.error( bold.red( e ) );
 			process.exit( 1 );
 		}
+
+		sys.puts( Color.green( "Configuration Complete" ) );
 	});
 });
