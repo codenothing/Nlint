@@ -3,16 +3,17 @@
 .\" A fork of tav's nodelint (http://github.com/tav/nodelint)
 .\" Corey Hart @ http://www.codenothing.com
 .
-.TH "NODELINT" "1" "[DATE]"
+.TH "NODELINT-BASE" "1" "[DATE]"
 .
 .SH "NAME"
-nodelint \- Project linting with Node\.
+Nodelint \- Project linting with Node\.
 .
 .SH "SYNOPSIS"
-\fBnodelint\fR [options] file\.js [file2\.js dir dir2]
+\fBnodelint-base\fR [options] file\.js [file2\.js dir dir2]
 .
 .SH "DESCRIPTION"
-\fBnodelint\fR is a command line tool that runs designated files through the JSLint parser to check for syntax errors\.
+\fBnodelint-base\fR is the non-cli form of nodelint, a tool that runs designated files through various parsers to check for syntax errors\.
+It can be used on the command line, as a pre\-commit hook, or incorporated into your build process\.
 .
 .SH "Options"
 .
@@ -39,3 +40,12 @@ Output missing files that were expected\.
 .
 .SS "\-w, \-\-show\-warnings"
 Output warning messages during processing\.
+.
+.SS "\-\-Nodelint\-cli"
+Trigger Cli run of arguments\.
+.
+.SS "\-\-Nodelint\-pre\-commit=\fIVCS\fR"
+Run the pre\-commit hook on files to be committed for the version control system defined\. Blocks commit on error\.
+.
+.SS "\-\-Nodelint\-pre\-commit\-all"
+Run Nodelint across the entire project before, and block commit on error\.

@@ -3,16 +3,16 @@
 .\" A fork of tav's nodelint (http://github.com/tav/nodelint)
 .\" Corey Hart @ http://www.codenothing.com
 .
-.TH "NODELINT" "1" "[DATE]"
+.TH "#{display}" "1" "[DATE]"
 .
 .SH "NAME"
-nodelint \- Project linting with Node\.
+#{name} \- #{display} with Node\.
 .
 .SH "SYNOPSIS"
-\fBnodelint\fR [options] file\.js [file2\.js dir dir2]
+\fB#{name}\fR [options] file\.js [file2\.js dir dir2]
 .
 .SH "DESCRIPTION"
-\fBnodelint\fR is a command line tool that runs designated files through the JSLint parser to check for syntax errors\.
+\fB#{name}\fR is a command line tool that runs designated files through the #{display} parser to check for syntax errors\.
 .
 .SH "Options"
 .
@@ -29,7 +29,7 @@ Disable coloring of output\.
 Verbose mode\. Outputs processing information like what directory is currently being read, or what file is currently being linted\.
 .
 .SS "\-p, \-\-show\-passed"
-Output list of files that passed their linters\.
+Output list of files that passed #{name}\.
 .
 .SS "\-i, \-\-show\-ignored"
 Output list of files ignored based on lintignore files\.
@@ -39,3 +39,9 @@ Output missing files that were expected\.
 .
 .SS "\-w, \-\-show\-warnings"
 Output warning messages during processing\.
+.
+.SS "\-\-#{name}=\fIFILE\fR"
+Define a custom #{name} file to use\.
+.
+.SH "Using #{display} Options"
+#{name} --#{name}_option=value [more options] file.js
