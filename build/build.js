@@ -5,6 +5,7 @@
  * Corey Hart @ http://www.codenothing.com
  */
 var Nodelint = require('../src/Nodelint'),
+	Color = Nodelint.Color,
 	sys = require('sys'),
 	fs = require('fs'),
 	path = require('path'),
@@ -14,7 +15,30 @@ var Nodelint = require('../src/Nodelint'),
 	rpath = /#\{path\}/g,
 	rexec = /#\{exec\}/g,
 	rname = /#\{name\}/g,
-	rdisplay = /#\{display\}/g;
+	rdisplay = /#\{display\}/g,
+	track,
+	templates = [
+		{
+			name: 'data',
+			path: dist + '.config',
+			error: 'Could not find configuration, did you run configure? - '
+		},
+		{
+			name: 'template',
+			path: __dirname + '/_template',
+			error: ''
+		},
+		{
+			name: 'man',
+			path: __dirname + '/../man1/individual.1',
+			error: ''
+		},
+		{
+			name: 'libfile',
+			path: __dirname + '/_libfile.js',
+			error: ''
+		}
+	];
 
 
 // Default error handling
@@ -65,7 +89,7 @@ function buildman( name, manfile, config ) {
 			error( e );
 		}
 
-		sys.puts( name + '.1 built.' );
+		sys.puts( Color.blue( name + '.1 built.' ) );
 	});
 }
 
@@ -82,7 +106,7 @@ function buildfile( name, file ) {
 				error( e );
 			}
 			else {
-				sys.puts( name + " built." );
+				sys.puts( Color.blue( name + " built." ) );
 			}
 		});
 	});
@@ -98,16 +122,21 @@ function convert( template, data ) {
 
 
 // Centralized processing handler, for when all templates are loaded
-function make( data, template, man ) {
-	// No change to base Nodelint
-	buildfile( 'nodelint-base', convert( template, data ) );
+track = Nodelint.Tracking('Build Process', function( e, results ) {
+	if ( e ) {
+		error( e );
+	}
+
+	// No change to base Nodelint, or libfile
+	buildfile( 'nodelint-base', convert( results.template, results.data ) );
+	buildfile( 'Nodelint.js', convert( results.libfile, results.data ) );
 
 	// Copy base nodelint manfiles
 	copy( __dirname + '/../man1/nodelint-base.1', dist + 'nodelint-base.1');
 	copy( __dirname + '/../man1/nodelint.1', dist + 'nodelint.1');
 
 	// Show more information for focues lint binfiles
-	var config = JSON.parse( data ), use;
+	var config = JSON.parse( results.data ), use;
 	config.verbose = true;
 	config[ 'Nodelint-cli' ] = true;
 	config[ 'show-passed' ] = true;
@@ -121,7 +150,7 @@ function make( data, template, man ) {
 	}
 
 	// The global nodelint handler
-	buildfile( 'nodelint', convert( template, JSON.stringify( config ) ) );
+	buildfile( 'nodelint', convert( results.template, JSON.stringify( config ) ) );
 
 	// Go through each required linter
 	Nodelint.each( Nodelint.Linters.linters, function( object, name ) {
@@ -131,31 +160,25 @@ function make( data, template, man ) {
 
 		config.use = [ name ];
 		config['default'] = name;
-		buildfile( name, convert( template, JSON.stringify( config ) ) );
-		buildman( name, man, object );
+		buildfile( name, convert( results.template, JSON.stringify( config ) ) );
+		buildman( name, results.man, object );
 	});
-}
+});
 
 
 // Make dist directory and get the templates
 mkdir( dist, function(){
-	fs.readFile( dist + '.config', 'utf8', function( e, data ) {
-		if ( e ) {
-			error( "Could not find configuration, did you run configure? - " + e );
-		}
-
-		fs.readFile( __dirname + '/_template', 'utf8', function( e, template ) {
+	Nodelint.each( templates, function( object ) {
+		track.mark( object.name );
+		fs.readFile( object.path, 'utf8', function( e, content ) {
 			if ( e ) {
-				error( e );
+				return track.error( object.error + e );
 			}
-
-			fs.readFile( __dirname + '/../man1/individual.1', 'utf8', function( e, man ) {
-				if ( e ) {
-					error( e );
-				}
-
-				make( data, template, man );
-			});
+			
+			track.mark( object.name, content );
 		});
 	});
+
+	// Start the wait process
+	track.start();
 });

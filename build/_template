@@ -7,5 +7,5 @@
  * Corey Hart @ http://www.codenothing.com
  */
 var Nodlint = require('#{path}'), config = #{config};
-Nodelint.Cli( Nodelint.extend( true, config, global._NodelintOptions ) );
+Nodelint.Cli( Nodelint.extend( true, config, global._NodelintOptions || {} ) );
 module.exports = Nodelint;

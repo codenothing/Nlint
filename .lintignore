@@ -10,3 +10,6 @@ tools/
 # For testing purposes
 test/ignore*
 test/*ignore*
+
+# Ignore the libfle template
+build/_libfile.js
