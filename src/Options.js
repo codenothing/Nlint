@@ -24,9 +24,6 @@ global.Nodelint.Options = {
 	// Default linter to use (only for direct file pointers)
 	'default': null,
 
-	// Prevent color wrapping of output
-	'no-color': false,
-
 	// Display processing info to the terminal
 	'verbose': false,
 
@@ -110,13 +107,6 @@ global.Nodelint.Options = {
 			'long': 'default',
 			'expect': true,
 			'default': null
-		},
-
-		// Shortcut for no-color, prevent color wrapping of output
-		'c': {
-			'long': 'no-color',
-			'expect': false,
-			'default': true
 		},
 
 		// Shortcut for verbose mode

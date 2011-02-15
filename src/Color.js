@@ -7,8 +7,7 @@
 var Nodelint = global.Nodelint,
 	// Expose on the Nodelint namespace
 	Color = Nodelint.Color = function( color, bold, str ) {
-		return Nodelint.Options[ 'no-color' ] ? str : 
-			"\x1B[" + ( bold ? 1 : 0 ) + ";" + Color.colors[ color ] + "m" + str + "\x1B[0m";
+		return "\x1B[" + ( bold ? 1 : 0 ) + ";" + Color.colors[ color ] + "m" + str + "\x1B[0m";
 	};
 
 // Color references

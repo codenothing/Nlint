@@ -50,11 +50,6 @@ Nodelint.extend( Help, {
 		"\tDefine a comma-sparated list of encodings to check for.",
 		"",
 
-		// disable coloring
-		Color.red( "  -c, --no-color" ),
-		"\tDisable coloring of output.",
-		"",
-
 		// verbose
 		Color.red( "  -v, --verbose" ),
 		"\tVerbose mode. Outputs processing information like what directory is currently being read, or what file is currently being linted.",

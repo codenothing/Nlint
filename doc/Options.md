@@ -11,8 +11,6 @@ Options.js contains the options object of default settings for Nodelint and JSLi
 
  - **-e ENCODINGS, --encodings=ENCODINGS:** Define a comma-sparated list of encodings to check for.
 
- - **-c, --no-color:** Disable coloring of output.
-
  - **-v, --verbose:** Verbose mode. Outputs processing information like what directory is currently being read, or what file is currently being linted.
 
  - **-p, --show-passed:** Output list of files that passed jslint.
