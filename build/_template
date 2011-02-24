@@ -6,6 +6,6 @@
  * A fork of tav's nodelint (http://github.com/tav/nodelint)
  * Corey Hart @ http://www.codenothing.com
  */
-var Nodlint = require('#{path}'), config = #{config};
+var Nodelint = require('#{path}'), config = #{config};
 Nodelint.Cli( Nodelint.extend( true, config, global._NodelintOptions || {} ) );
 module.exports = Nodelint;

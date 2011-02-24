@@ -18,6 +18,7 @@ var Nodelint = require('../src/Nodelint'),
 // Default error handling
 function error( e ) {
 	sys.error( Color.bold.red( e.message || e ) );
+	process.exit( 1 );
 }
 
 
@@ -41,45 +42,46 @@ function mkdir( dir, callback ) {
 
 
 // Installs binfiles
-function install( file ) {
-	// Ensure dev wants the binfile
-	if ( config[ 'no-' + file ] ) {
-		return;
-	}
-
-	// Shortcut paths
-	var from = dist + file,
-		to = path.normalize( prefix + 'bin/' + file );
-
+function install( from, to ) {
 	exec( 'cp ' + from + ' ' + to, function( e ) {
 		if ( e ) {
 			error( e );
 		}
-		sys.puts( 'Installed ' + to );
+		sys.puts( Color.blue( 'Installed ' + to ) );
 	});
 }
 
 
+// Installs binfiles and manfiles
+function all(){
+	var stack = [ 'nodelint', 'nodelint-base' ];
 
-function manfiles( file ) {
-	// Shortcut paths
-	var from = root + 'man1/Nodelint.1',
-		to = prefix + 'share/man/man1/' + file + '.1';
+	// Install each of the lint cli programs
+	Nodelint.each( Nodelint.Linters.linters, function( object, name ) {
+		stack.push( name );
+	});
 
-	exec( 'cp ' + from + ' ' + to, function( e ) {
-		if ( e ) {
-			error( e );
-		}
+	// Install the nodelint and nodelint-base clie programs
+	Nodelint.each( stack, function( name ) {
+		// Binfile
+		install(
+			dist + name,
+			prefix + 'bin/' + name
+		);
 
-		sys.puts( 'Installed ' + to );
+		// Manfile
+		install(
+			dist + name + '.1',
+			prefix + 'share/man/man1/' + name + '.1'
+		);
 	});
 }
 
 
-// Installing lib file
+// Installing lib file for requiring into your apps
 function libfile( i ) {
 	if ( i >= require.paths.length ) {
-		error( "Could not find path to install lib files." );
+		error( "Could not find path to insall lib files." );
 	}
 
 	path.exists( require.paths[ i ], function( exists ) {
@@ -87,13 +89,10 @@ function libfile( i ) {
 			return libfile( ++i );
 		}
 
-		exec( 'cp ' + dist + 'Nodelint ' + require.paths[ i ] + '/Nodelint.js', function( e ) {
-			if ( e ) {
-				error( e );
-			}
-
-			sys.puts( 'Installed ' + require.paths[ i ] + '/Nodelint.js' );
-		});
+		install(
+			dist + 'Nodelint.js',
+			require.paths[ i ] + '/Nodelint.js'
+		);
 	});
 }
 
@@ -121,14 +120,10 @@ fs.readFile( dist + '.config', 'utf8', function( e, data ) {
 
 		// Binfiles
 		mkdir( prefix + 'bin/', function(){
-			[ 'jslint', 'Nodelint' ].forEach( install );
-		});
-
-		// manfiles
-		mkdir( prefix + 'share/', function(){
-			mkdir( prefix + 'share/man/', function(){
-				mkdir( prefix + 'share/man/man1/', function(){
-					[ 'jslint', 'Nodelint' ].forEach( manfiles );
+			// Manfiles
+			mkdir( prefix + 'share/', function(){
+				mkdir( prefix + 'share/man/', function(){
+					mkdir( prefix + 'share/man/man1/', all );
 				});
 			});
 		});

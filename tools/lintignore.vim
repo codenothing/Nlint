@@ -2,7 +2,7 @@
 " Language:	lint ignore file
 " Maintainer:	Corey Hart <corey@codenothing.com>
 " Filenames:	.lintignore
-" Last Change:	[DATE]
+" Last Change:	February 22, 2011
 
 if exists("b:current_syntax")
     finish
