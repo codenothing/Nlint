@@ -1,8 +1,1 @@
-# Ignore all swp files
-.*.swp
-
-# Ignore build files
-dist/
-
-# Also ignore the output from testing
-build/out/*.out
+node_modules

@@ -1,15 +1,5 @@
-# Nothing good can come from the git repo
-.git/
-
-# Lets ignore the linters as they are third-party
-src/linters/*
-
-# Ignore all non nodelint packages
-tools/
-
-# For testing purposes
-test/ignore*
-test/*ignore*
-
-# Ignore the libfle template
-build/_libfile.js
+{
+	ignore: [
+		'node_modules/*'
+	]
+}
