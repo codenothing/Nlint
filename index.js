@@ -24,8 +24,7 @@ global.Nodelint = module.exports = require( './lib/Nodelint.js' );
 
 	// Command line interface
 	'Cli/Cli.js',
-	'Cli/Color.js',
-	'Cli/ARGV.js'
+	'Cli/Color.js'
 
 ].forEach(function( file ) {
 	require( './lib/' + file );
