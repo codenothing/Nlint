@@ -19,6 +19,10 @@
 	"bin": {
 		"nlint": "./bin/nlint"
 	},
+	"bugs": {
+		"url": "https://github.com/codenothing/Nodelint/issues",
+		"email": "corey@codenothing.com"
+	},
 	"devDependencies": {
 		"nlint": "0.0.2",
 		"munit": "0.0.1"
