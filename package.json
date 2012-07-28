@@ -4,7 +4,7 @@
 	"repository": "https://github.com/codenothing/Nodelint",
 	"keywords": [ "lint", "jshint", "jslint", "jsonlint", "csslint" ],
 	"author": "Corey Hart <corey@codenothing.com>",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"main": "./index.js",
 	"engines": {
 		"node": ">=0.6.10"
@@ -24,7 +24,7 @@
 		"email": "corey@codenothing.com"
 	},
 	"devDependencies": {
-		"nlint": "0.0.2",
+		"nlint": "0.0.3",
 		"munit": "0.0.1"
 	}
 }
