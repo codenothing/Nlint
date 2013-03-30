@@ -1,4 +1,4 @@
-MUnit( 'JSONLint', 3, function( assert ) {
+munit( 'JSONLint', 3, function( assert ) {
 	var linter = Nodelint( __dirname + '/error.json', function( e, linter ) {
 		if ( e ) {
 			return assert.fail( 'Fatal Error' );

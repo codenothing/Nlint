@@ -1,4 +1,4 @@
-MUnit( 'JSHint', 3, function( assert ) {
+munit( 'JSHint', 3, function( assert ) {
 	var linter = Nodelint( __dirname + '/error.js', { use: 'jshint', linters: { jshint: { indent: 1 } } }, function( e, linter ) {
 		if ( e ) {
 			return assert.fail( 'Fatal Error' );

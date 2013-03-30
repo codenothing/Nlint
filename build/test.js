@@ -1,11 +1,11 @@
-global.MUnit = require( 'MUnit' );
+global.munit = require( 'munit' );
 global.Nodelint = require( '../' );
 
-// Defaults
-MUnit.extend( MUnit.Defaults.Settings, {
+// Kill tests on failure
+munit.extend( munit.defaults.settings, {
 	stopOnFail: true,
 	timeout: 5000
 });
 
 // Render all tests
-MUnit.render( __dirname + '/../test/' );
+munit.render( __dirname + '/../test/', { junit: __dirname + '/results/' } );

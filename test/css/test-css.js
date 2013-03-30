@@ -1,4 +1,4 @@
-MUnit( 'CSSLint', 3, function( assert ) {
+munit( 'CSSLint', 3, function( assert ) {
 	var linter = Nodelint( __dirname + '/error.css', function( e, linter ) {
 		if ( e ) {
 			return assert.fail( 'Fatal Error' );
