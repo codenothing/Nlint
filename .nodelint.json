@@ -4,5 +4,10 @@
 		".git/",
 		"test/",
 		"lib/linters/lib-jslint.js"
-	]
+	],
+	"linters": {
+		"jshint": {
+			"boss": true
+		}
+	}
 }

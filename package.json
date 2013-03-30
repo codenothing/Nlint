@@ -20,10 +20,10 @@
 		"test": "make test"
 	},
 	"dependencies": {
-		"json5": "0.1.0",
-		"jshint": "0.7.1",
+		"json5": "0.2.0",
+		"jshint": "1.1.0",
 		"json-lint": "0.1.0",
-		"csslint": "0.9.8",
+		"csslint": "0.9.10",
 		"argv": "0.0.1"
 	},
 	"devDependencies": {
