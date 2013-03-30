@@ -1,8 +1,9 @@
 # Nodelint
 
 Nodelint does full project syntax linting. It runs your js/json/css files
-through linters to find errors that might not reveal themselves in testing.
-
+through linters to find errors that might not reveal themselves in testing.  
+  
+[![Build Status](https://travis-ci.org/codenothing/Nodelint.png?branch=master)](https://travis-ci.org/codenothing/Nodelint)
 
 ### Installation
 
