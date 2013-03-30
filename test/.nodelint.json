@@ -1,3 +1,8 @@
 {
-	"reset": true
+	"reset": true,
+	"linters": {
+		"jslint": {
+			"white": true
+		}
+	}
 }
