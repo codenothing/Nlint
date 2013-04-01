@@ -8,4 +8,7 @@ munit.extend( munit.defaults.settings, {
 });
 
 // Render all tests
-munit.render( __dirname + '/../test/', { junit: __dirname + '/results/' } );
+munit.render( __dirname + '/../test/', {
+	junit: __dirname + '/results/',
+	junitPrefix: process.version.replace( /\./g, '_' )
+});
