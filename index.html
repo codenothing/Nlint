@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Nodelint by codenothing</title>
+    <title>Nlint by codenothing</title>
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
@@ -16,13 +16,13 @@
   <body>
     <div class="wrapper">
       <header>
-        <h1 class="header">Nodelint</h1>
-        <p class="header">Nodelint does full project linting of your static files</p>
+        <h1 class="header">Nlint</h1>
+        <p class="header">Nlint does full project linting of your static files</p>
 
         <ul>
-          <li class="download"><a class="buttons" href="https://github.com/codenothing/Nodelint/zipball/master">Download ZIP</a></li>
-          <li class="download"><a class="buttons" href="https://github.com/codenothing/Nodelint/tarball/master">Download TAR</a></li>
-          <li><a class="buttons github" href="https://github.com/codenothing/Nodelint">View On GitHub</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/codenothing/Nlint/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/codenothing/Nlint/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/codenothing/Nlint">View On GitHub</a></li>
         </ul>
 
         <p class="header">This project is maintained by <a class="header name" href="https://github.com/codenothing">codenothing</a></p>
@@ -30,76 +30,137 @@
 
       </header>
       <section>
-        <h1>Nodelint</h1>
+        <h1>
+<a name="nlint" class="anchor" href="#nlint"><span class="octicon octicon-link"></span></a>Nlint</h1>
 
-<p>Nodelint does full project syntax linting. It runs your js/json/css files
+<p>Nlint does full project syntax linting. It runs your js/json/css files
 through linters to find errors that might not reveal themselves in testing.</p>
 
-<h3>Installation</h3>
+<ul>
+<li>Async, multi process for faster reading and linting</li>
+<li>
+<a href="https://github.com/jshint/jshint">JSHint</a>: JavaScript code quality tool</li>
+<li>
+<a href="https://github.com/stubbornella/csslint">CSSLint</a>: Automated linting of Cascading Stylesheets</li>
+<li>
+<a href="https://github.com/codenothing/jsonlint">JSONLint</a>: JSON Linter that allows comments</li>
+</ul><p><a href="https://travis-ci.org/codenothing/Nlint"><img src="https://travis-ci.org/codenothing/Nlint.png?branch=master" alt="Build Status"></a></p>
 
-<div class="highlight">
-<pre><span class="nv">$ </span>npm install -g nlint
-</pre>
-</div>
+<h3>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h3>
 
+<div class="highlight"><pre><span class="nv">$ </span>npm install nlint
+</pre></div>
 
-<h3>Usage</h3>
+<h3>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h3>
 
-<div class="highlight">
-<pre><span class="nv">$ </span>nlint /path/to/dir/
-</pre>
-</div>
+<p>When installed globally <code>npm install -g nlint</code>, the nlint command may be used</p>
 
+<div class="highlight"><pre><span class="nv">$ </span>nlint /path/to/dir/
+</pre></div>
 
-<p>To incorporate nodelint into your build process, just trigger the render method</p>
+<p>To incorporate nlint into your build process, just trigger the render method</p>
 
-<div class="highlight">
-<pre><span class="kd">var</span> <span class="nx">Nodelint</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span> <span class="s1">'nlint'</span> <span class="p">);</span>
+<div class="highlight"><pre><span class="nx">require</span><span class="p">(</span> <span class="s1">'nlint'</span> <span class="p">).</span><span class="nx">render</span><span class="p">(</span> <span class="s1">'/path/to/root/'</span> <span class="p">);</span>
+</pre></div>
 
-<span class="nx">Nodelint</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span> <span class="s1">'/path/to/root/'</span> <span class="p">);</span>
-</pre>
-</div>
+<h3>
+<a name="options" class="anchor" href="#options"><span class="octicon octicon-link"></span></a>Options</h3>
 
+<ul>
+<li>
+<strong>use</strong>: List of linters to use. Comma separated list, or array of linters. Defaults to all linters.</li>
+<li>
+<strong>fork</strong>: Number of forked processes for use in linting. Will speed up large projects. Defaults to the number of cpus on the system.</li>
+<li>
+<strong>ignore</strong>: List of file paths to ignore. Should be an array of string paths.</li>
+<li>
+<strong>linters</strong>: Object of options that are passed to the linter function</li>
+<li>
+<strong>reset</strong>: Resets all previous options up to that directory (including global defaults)</li>
+</ul><p>Here is a sample nlint file that can be used (commented)</p>
 
-<h3>.nodelint</h3>
+<div class="highlight"><pre><span class="c1">// .nlint.json</span>
+<span class="p">{</span>
+    <span class="c1">// Use all linters</span>
+    <span class="s2">"use"</span><span class="o">:</span> <span class="s2">"*"</span><span class="p">,</span>
 
-<p>Nodelint files define out options for the directory it's in, and each subdirectory 
-following. Each following nodelint file adds/overwrites the previous nodelint file in
+    <span class="c1">// Ignore the .git generated directory because nothing good can come of it</span>
+    <span class="c1">// Also ignore node_modules as third-party modules might not pass your standards</span>
+    <span class="s2">"ignore"</span><span class="o">:</span> <span class="p">[</span>
+        <span class="s2">".git/"</span><span class="p">,</span>
+        <span class="s2">"node_modules/"</span>
+    <span class="p">],</span>
+
+    <span class="c1">// Tell jshint that the JavaScript files are for a nodejs enviornment</span>
+    <span class="s2">"linters"</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">"jshint"</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">"node"</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3>
+<a name="nlint-1" class="anchor" href="#nlint-1"><span class="octicon octicon-link"></span></a>.nlint</h3>
+
+<p>Nlint files define out options for the directory it's in, and each subdirectory
+following. Each following nlint file adds/overwrites the previous nlint file in
 the parent directories.</p>
 
 <ul>
 <li>
-<strong>.nodelint, .nodelint.json, .nodelint.json5</strong>: JSON files mimicking options for that directory</li>
+<strong>.nlint, .nlint.json, .nlint.json5</strong>: JSON files mimicking options for that directory</li>
 <li>
-<strong>.nodelint.js</strong>: module.exports is used as the options object for that directory</li>
-</ul><h3>Options</h3>
+<strong>.nlint.js</strong>: module.exports is used as the options object for that directory</li>
+</ul><div class="highlight"><pre><span class="c"># Sample directory setup</span>
+/Users/me/my-project/.nlint.json
+/Users/me/my-project/test/.nlint.json
+</pre></div>
 
-<ul>
-<li>
-<strong>use</strong>: List of linters to use. Comma separated list, or array of linters.</li>
-<li>
-<strong>linters</strong>: Object of options that are passed to the linter function</li>
-<li>
-<strong>ignore</strong>: List of file paths to ignore. Can be an array of either string paths or Match objects.</li>
-<li>
-<strong>linter</strong>: List of file paths to assign a specific linter to. Can be an array of either string paths or Match objects.</li>
-<li>
-<strong>special</strong>: List of file paths to assign special options to. Can be an array of either string paths or Match objects.</li>
-</ul><div class="highlight">
-<pre><span class="c1">// Match Object</span>
-<span class="p">{</span>
-    <span class="nx">match</span><span class="o">:</span> <span class="s1">'/path/to/file'</span><span class="p">,</span>
-    <span class="nx">priority</span><span class="o">:</span> <span class="mf">0.5</span> <span class="c1">// Range: 0.0-1.0</span>
-<span class="p">}</span>
-</pre>
-</div>
+<p>When nlint is traversing your project, every file and directory that is not the <code>/test</code> directory
+inherits it's settings from the root <code>/.nlint.json</code> file.  </p>
 
+<p>When nlint is traversing your test directory, the settings used is the equivalent of the following</p>
+
+<div class="highlight"><pre><span class="nx">settings</span> <span class="o">=</span> <span class="nx">extend</span><span class="p">(</span>
+    <span class="nx">require</span><span class="p">(</span> <span class="s2">"/Users/me/my-project/.nlint.json"</span> <span class="p">),</span>
+    <span class="nx">require</span><span class="p">(</span> <span class="s2">"/Users/me/my-project/test/.nlint.json"</span> <span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+
+<hr><h3>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h3>
+
+<pre><code>The MIT License
+
+Copyright (c) 2012-2013 Corey Hart
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+</code></pre>
       </section>
       <footer>
         <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
       </footer>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
 		
   </body>
 </html>
