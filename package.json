@@ -21,7 +21,7 @@
 	},
 	"dependencies": {
 		"json5": "0.2.0",
-		"jshint": "2.1.4",
+		"jshint": "2.1.9",
 		"json-lint": "0.1.0",
 		"csslint": "0.9.10",
 		"argv": "0.0.2",
