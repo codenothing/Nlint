@@ -19,7 +19,7 @@ $ npm install nlint
 
 ### Usage
 
-When installed globally (`npm install -g nlint`), the nlint command may be used
+When installed globally `npm install -g nlint`, the nlint command may be used
 
 ```bash
 $ nlint /path/to/dir/
