@@ -1,7 +1,7 @@
 {
 	"name": "nlint",
 	"description": "Full project linting.",
-	"repository": "https://github.com/codenothing/Nodelint",
+	"repository": "https://github.com/codenothing/Nlint",
 	"keywords": [ "lint", "jshint", "jslint", "jsonlint", "csslint" ],
 	"author": "Corey Hart <corey@codenothing.com>",
 	"version": "0.0.5",
@@ -13,7 +13,7 @@
 		"nlint": "./bin/nlint"
 	},
 	"bugs": {
-		"url": "https://github.com/codenothing/Nodelint/issues",
+		"url": "https://github.com/codenothing/Nlint/issues",
 		"email": "corey@codenothing.com"
 	},
 	"scripts": {

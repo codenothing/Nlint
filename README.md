@@ -48,9 +48,6 @@ Here is a sample nlint file that can be used (commented)
 	// Use all linters
 	"use": "*",
 
-	// Use a forked process for each linter
-	"fork": true,
-
 	// Ignore the .git generated directory because nothing good can come of it
 	// Also ignore node_modules as third-party modules might not pass your standards
 	"ignore": [
