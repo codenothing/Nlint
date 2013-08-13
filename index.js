@@ -1,34 +1,33 @@
-var _Nodelint = global.Nodelint;
+var _Nlint = global.Nlint;
 
-// Globalizing so that all libs use the same Nodelint object
+// Globalizing so that all libs use the same Nlint object
 // Global object will be removed by end of script
-global.Nodelint = module.exports = require( './lib/Nodelint.js' );
+global.Nlint = module.exports = require( './lib/Nlint.js' );
 
 // Libs are assumed to be prefixed to the lib directory
 [
 
 	// Core
 	'Defaults.js',
-	'Depends.js',
+	'FileResult.js',
+	'MatchPath.js',
 	'Settings.js',
 	'Util.js',
-	'Tracking.js',
 	'Linter.js',
 	'Render.js',
 
 	// Pre-shipped linters
-	'linters/jslint.js',
 	'linters/jshint.js',
 	'linters/jsonlint.js',
 	'linters/csslint.js',
 
-	// Command line interface
-	'Cli/Cli.js',
-	'Cli/Color.js'
+	// Cli Tools
+	'Cli.js',
+	'Color.js'
 
 ].forEach(function( file ) {
 	require( './lib/' + file );
 });
 
 // Remove Stroke from global scope
-global.Nodelint = _Nodelint;
+global.Nlint = _Nlint;

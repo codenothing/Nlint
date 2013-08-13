@@ -1,8 +1,13 @@
 {
-	"reset": true,
+	"ignore": [
+		"linters/"
+	],
 	"linters": {
-		"jslint": {
-			"white": true
+		"jshint": {
+			"predef": {
+				"munit": true,
+				"Nlint": true
+			}
 		}
 	}
 }

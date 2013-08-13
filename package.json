@@ -24,10 +24,11 @@
 		"jshint": "2.1.4",
 		"json-lint": "0.1.0",
 		"csslint": "0.9.10",
-		"argv": "0.0.1"
+		"argv": "0.0.2",
+		"async": "0.2.9"
 	},
 	"devDependencies": {
-		"nlint": "0.0.4",
+		"nlint": "0.0.5",
 		"munit": "0.0.6"
 	}
 }

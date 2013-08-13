@@ -1,13 +1,13 @@
 {
 	"ignore": [
 		"node_modules/",
-		".git/",
-		"test/",
-		"lib/linters/lib-jslint.js"
+		".git/"
 	],
 	"linters": {
 		"jshint": {
-			"boss": true
+			"undef": true,
+			"boss": true,
+			"node": true
 		}
 	}
 }

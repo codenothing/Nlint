@@ -1,57 +1,100 @@
-# Nodelint
+# Nlint
 
-Nodelint does full project syntax linting. It runs your js/json/css files
-through linters to find errors that might not reveal themselves in testing.  
+Nlint does full project syntax linting. It runs your js/json/css files
+through linters to find errors that might not reveal themselves in testing.
+
+* Async, multi process for faster reading and linting
+* [JSHint](https://github.com/jshint/jshint): JavaScript code quality tool
+* [CSSLint](https://github.com/stubbornella/csslint): Automated linting of Cascading Stylesheets
+* [JSONLint](https://github.com/codenothing/jsonlint): JSON Linter that allows comments
   
-[![Build Status](https://travis-ci.org/codenothing/Nodelint.png?branch=master)](https://travis-ci.org/codenothing/Nodelint)
+[![Build Status](https://travis-ci.org/codenothing/Nlint.png?branch=master)](https://travis-ci.org/codenothing/Nlint)
 
 ### Installation
 
 ```bash
-$ npm install -g nlint
+$ npm install nlint
 ```
 
 
 ### Usage
 
+When installed globally (`npm install -g nlint`), the nlint command may be used
+
 ```bash
 $ nlint /path/to/dir/
 ```
 
-To incorporate nodelint into your build process, just trigger the render method
+To incorporate nlint into your build process, just trigger the render method
 
 ```js
-var Nodelint = require( 'nlint' );
-
-Nodelint.render( '/path/to/root/' );
+require( 'nlint' ).render( '/path/to/root/' );
 ```
-
-
-### .nodelint
-
-Nodelint files define out options for the directory it's in, and each subdirectory 
-following. Each following nodelint file adds/overwrites the previous nodelint file in
-the parent directories.
-
-* **.nodelint, .nodelint.json, .nodelint.json5**: JSON files mimicking options for that directory
-* **.nodelint.js**: module.exports is used as the options object for that directory
 
 
 ### Options
 
-* **use**: List of linters to use. Comma separated list, or array of linters.
+* **use**: List of linters to use. Comma separated list, or array of linters. Defaults to all linters.
+* **fork**: Number of forked processes for use in linting. Will speed up large projects. Defaults to the number of cpus on the system.
+* **ignore**: List of file paths to ignore. Should be an array of string paths.
 * **linters**: Object of options that are passed to the linter function
-* **ignore**: List of file paths to ignore. Can be an array of either string paths or Match objects.
-* **linter**: List of file paths to assign a specific linter to. Can be an array of either string paths or Match objects.
-* **special**: List of file paths to assign special options to. Can be an array of either string paths or Match objects.
+* **reset**: Resets all previous options up to that directory (including global defaults)
+
+Here is a sample nlint file that can be used (commented)
 
 ```js
-// Match Object
+// .nlint.json
 {
-	match: '/path/to/file',
-	priority: 0.5 // Range: 0.0-1.0
+	// Use all linters
+	"use": "*",
+
+	// Use a forked process for each linter
+	"fork": true,
+
+	// Ignore the .git generated directory because nothing good can come of it
+	// Also ignore node_modules as third-party modules might not pass your standards
+	"ignore": [
+		".git/",
+		"node_modules/"
+	],
+
+	// Tell jshint that the JavaScript files are for a nodejs enviornment
+	"linters": {
+		"jshint": {
+			"node": true
+		}
+	}
 }
 ```
+
+
+### .nlint
+
+Nlint files define out options for the directory it's in, and each subdirectory
+following. Each following nlint file adds/overwrites the previous nlint file in
+the parent directories.
+
+* **.nlint, .nlint.json, .nlint.json5**: JSON files mimicking options for that directory
+* **.nlint.js**: module.exports is used as the options object for that directory
+
+```sh
+# Sample directory setup
+/Users/me/my-project/.nlint.json
+/Users/me/my-project/test/.nlint.json
+```
+
+When nlint is traversing your project, every file and directory that is not the `/test` directory
+inherits it's settings from the root `/.nlint.json` file.  
+  
+When nlint is traversing your test directory, the settings used is the equivalent of the following
+
+```js
+settings = extend(
+	require( "/Users/me/my-project/.nlint.json" ),
+	require( "/Users/me/my-project/test/.nlint.json" )
+);
+```
+
 
 ----
 ### License

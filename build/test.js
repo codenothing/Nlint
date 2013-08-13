@@ -1,5 +1,4 @@
-global.munit = require( 'munit' );
-global.Nodelint = require( '../' );
+var munit = global.munit = require( 'munit' );
 
 // Extend module timeout grace period to 5 seconds
 munit.defaults.settings.timeout = 5000;
