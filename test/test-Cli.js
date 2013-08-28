@@ -20,7 +20,7 @@ munit( 'Cli', function( assert ) {
 	});
 
 	// Test with no options or targets
-	Nlint.Cli();
+	Nlint.Cli([]);
 	assert.equal( 'render empty triggered', renderSpy.count, 2 );
 	assert.deepEqual( 'render empty arg targets', renderSpy.args[ 0 ], [ process.cwd() ] );
 	assert.deepEqual( 'render empty arg options', renderSpy.args[ 1 ], {} );
