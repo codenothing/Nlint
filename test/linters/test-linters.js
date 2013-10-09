@@ -1,6 +1,6 @@
-munit( 'Linters', { queue: 'nlint-full', expect: 4 }, {
+munit( 'Integration', { queue: 'nlint-full', expect: 4, timeout: 3000 }, {
 
-	CSSLint: function( queue, assert ) {
+	CSSLint: function( assert ) {
 		Nlint( __dirname + '/csslint/error.css', { user: 'csslint', fork: 0 }, function( e, linter ) {
 			if ( e ) {
 				return assert.fail( 'Fatal Error' );
@@ -23,7 +23,7 @@ munit( 'Linters', { queue: 'nlint-full', expect: 4 }, {
 		});
 	},
 
-	'CSSLint-Fork': function( queue, assert ) {
+	'CSSLint-Fork': function( assert ) {
 		Nlint( __dirname + '/csslint/error.css', { user: 'csslint', fork: 1 }, function( e, linter ) {
 			if ( e ) {
 				return assert.fail( 'Fatal Error' );
@@ -46,7 +46,7 @@ munit( 'Linters', { queue: 'nlint-full', expect: 4 }, {
 		});
 	},
 
-	JSHint: function( queue, assert ) {
+	JSHint: function( assert ) {
 		Nlint( __dirname + '/jshint/error.js', { use: 'jshint', fork: 0, linters: { jshint: { indent: 1 } } }, function( e, linter ) {
 			if ( e ) {
 				return assert.fail( 'Fatal Error' );
@@ -69,7 +69,7 @@ munit( 'Linters', { queue: 'nlint-full', expect: 4 }, {
 		});
 	},
 
-	'JSHint-Fork': function( queue, assert ) {
+	'JSHint-Fork': function( assert ) {
 		Nlint( __dirname + '/jshint/error.js', { use: 'jshint', fork: 1, linters: { jshint: { indent: 1 } } }, function( e, linter ) {
 			if ( e ) {
 				return assert.fail( 'Fatal Error' );
@@ -92,7 +92,7 @@ munit( 'Linters', { queue: 'nlint-full', expect: 4 }, {
 		});
 	},
 
-	JSONLint: function( queue, assert ) {
+	JSONLint: function( assert ) {
 		Nlint( __dirname + '/jsonlint/error.json', { use: 'jsonlint', fork: 0 }, function( e, linter ) {
 			if ( e ) {
 				return assert.fail( 'Fatal Error' );
@@ -115,7 +115,7 @@ munit( 'Linters', { queue: 'nlint-full', expect: 4 }, {
 		});
 	},
 
-	'JSONLint-Fork': function( queue, assert ) {
+	'JSONLint-Fork': function( assert ) {
 		Nlint( __dirname + '/jsonlint/error.json', { use: 'jsonlint', fork: 1 }, function( e, linter ) {
 			if ( e ) {
 				return assert.fail( 'Fatal Error' );

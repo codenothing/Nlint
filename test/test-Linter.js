@@ -19,7 +19,7 @@ munit( 'Linter',
 					result: assert.data.result
 				}
 			});
-			assert.data.linter = new Nlint.Linter( "/a/b/c/linter.js" );
+			assert.data.linter = new Linter( "/a/b/c/linter.js" );
 			Nlint.Linters.pop();
 			callback();
 		}
@@ -29,10 +29,10 @@ munit( 'Linter',
 	{
 
 		'static': function( assert ) {
-			assert.equal( 'MATCH_TYPE_STRING', Nlint.Linter.MATCH_TYPE_STRING, 'MATCH_TYPE_STRING' )
-				.equal( 'MATCH_TYPE_REGEX', Nlint.Linter.MATCH_TYPE_REGEX, 'MATCH_TYPE_REGEX' )
-				.equal( 'MATCH_TYPE_FUNC', Nlint.Linter.MATCH_TYPE_FUNC, 'MATCH_TYPE_FUNC' )
-				.isString( 'LINTER_DIR', Nlint.Linter.LINTER_DIR );
+			assert.equal( 'MATCH_TYPE_STRING', Linter.MATCH_TYPE_STRING, 'MATCH_TYPE_STRING' )
+				.equal( 'MATCH_TYPE_REGEX', Linter.MATCH_TYPE_REGEX, 'MATCH_TYPE_REGEX' )
+				.equal( 'MATCH_TYPE_FUNC', Linter.MATCH_TYPE_FUNC, 'MATCH_TYPE_FUNC' )
+				.isString( 'LINTER_DIR', Linter.LINTER_DIR );
 		},
 
 		init: function( assert ) {

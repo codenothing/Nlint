@@ -29,5 +29,9 @@ global.Nlint = module.exports = require( './lib/Nlint.js' );
 	require( './lib/' + file );
 });
 
+
+// Transfer current version
+global.Nlint.version = require( './package.json' ).version;
+
 // Remove Stroke from global scope
 global.Nlint = _Nlint;
