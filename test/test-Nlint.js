@@ -189,6 +189,10 @@ munit( 'Nlint', setupOptions, {
 		assert.equal( 'on called for error, message, exit, and close', onSpy.count, 4 );
 		assert.deepEqual( 'child fork objects', nlint._forks, [ emitter ] );
 
+		// Test quick return if forks already exist
+		nlint.forks();
+		assert.equal( 'fork not triggered when forks exist', forkSpy.count, 1 );
+
 		// Error event
 		event = onSpy.history[ 0 ];
 		assert.equal( 'error event arg name', event.args[ 0 ], 'error' );
