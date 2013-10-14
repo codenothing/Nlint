@@ -80,7 +80,7 @@ munit( 'Nlint', setupOptions, {
 	run: function( assert ) {
 		var nlint = assert.data.nlint,
 			callback = assert.spy(),
-			fakeSettings = { fork: 199 },
+			fakeSettings = new Nlint.Settings({ fork: 199 }),
 
 			// Forks creator
 			forkSpy = assert.spy( nlint, 'forks' ),
@@ -110,8 +110,7 @@ munit( 'Nlint', setupOptions, {
 		// Internal calls
 		assert.equal( 'run .forks triggered', forkSpy.count, 1 );
 		assert.equal( 'run fs.stat trigger', statSpy.count, 1 );
-		assert.equal( 'run settings.update trigger', updateSpy.count, 1 );
-		assert.equal( 'run settings.update arg path', updateSpy.args[ 0 ], fakeSettings );
+		assert.equal( 'run nlint.settings reassigned', nlint.settings, fakeSettings );
 		assert.equal( 'run nodelint trigger', nodelintSpy.count, 1 );
 		assert.equal( 'run dir trigger', dirSpy.count, 1 );
 		assert.equal( 'run single not triggered', singleSpy.count, 0 );
