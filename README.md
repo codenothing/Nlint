@@ -9,6 +9,7 @@ through linters to find errors that might not reveal themselves in testing.
 * [JSONLint](https://github.com/codenothing/jsonlint): JSON Linter that allows comments
   
 [![Build Status](https://travis-ci.org/codenothing/Nlint.png?branch=master)](https://travis-ci.org/codenothing/Nlint)
+[![Code Climate](https://codeclimate.com/github/codenothing/Nlint.png)](https://codeclimate.com/github/codenothing/Nlint)
 
 ### Installation
 
