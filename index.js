@@ -3,6 +3,7 @@ var _Nlint = global.Nlint;
 // Globalizing so that all libs use the same Nlint object
 // Global object will be removed by end of script
 global.Nlint = module.exports = require( './lib/Nlint.js' );
+global.Nlint.version = require( './package.json' ).version;
 
 // Libs are assumed to be prefixed to the lib directory
 [
@@ -16,11 +17,6 @@ global.Nlint = module.exports = require( './lib/Nlint.js' );
 	'Linter.js',
 	'Render.js',
 
-	// Pre-shipped linters
-	'linters/jshint.js',
-	'linters/jsonlint.js',
-	'linters/csslint.js',
-
 	// Cli Tools
 	'Cli.js',
 	'Color.js'
@@ -29,9 +25,6 @@ global.Nlint = module.exports = require( './lib/Nlint.js' );
 	require( './lib/' + file );
 });
 
-
-// Transfer current version
-global.Nlint.version = require( './package.json' ).version;
 
 // Remove Stroke from global scope
 global.Nlint = _Nlint;
