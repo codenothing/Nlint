@@ -5,6 +5,7 @@ through linters to find errors that might not reveal themselves in testing.
 
 * Async, multi process for faster reading and linting
 * [JSHint](https://github.com/jshint/jshint): JavaScript code quality tool
+* [JSCS](https://github.com/mdevils/node-jscs): JavaScript code style checker
 * [CSSLint](https://github.com/stubbornella/csslint): Automated linting of Cascading Stylesheets
 * [JSONLint](https://github.com/codenothing/jsonlint): JSON Linter that allows comments
   
