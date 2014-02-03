@@ -9,6 +9,7 @@ through linters to find errors that might not reveal themselves in testing.
 * [CSSLint](https://github.com/stubbornella/csslint): Automated linting of Cascading Stylesheets
 * [JSONLint](https://github.com/codenothing/jsonlint): JSON Linter that allows comments
   
+[![NPM version](https://badge.fury.io/js/nlint.png)](http://badge.fury.io/js/nlint)
 [![Build Status](https://travis-ci.org/codenothing/Nlint.png?branch=master)](https://travis-ci.org/codenothing/Nlint)
 [![Code Climate](https://codeclimate.com/github/codenothing/Nlint.png)](https://codeclimate.com/github/codenothing/Nlint)
 
