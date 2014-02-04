@@ -21,11 +21,11 @@
 	},
 	"dependencies": {
 		"json5": "0.2.0",
-		"jshint": "2.1.11",
+		"jshint": "2.4.3",
 		"json-lint": "0.1.0",
-		"csslint": "0.9.10",
+		"csslint": "0.10.0",
 		"argv": "0.0.2",
-		"async": "0.2.9",
+		"async": "0.2.10",
 		"jscs": "1.2.4"
 	},
 	"devDependencies": {
